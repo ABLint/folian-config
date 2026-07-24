@@ -1,0 +1,35 @@
+{
+  "configurationVersion": 1,
+  "publishedAt": "2026-07-23T00:00:00.000Z",
+  "schemaVersion": "2026-07-23.v1",
+  "capabilities": {
+    "streaming": {
+      "displayName": "Streaming responses",
+      "description": "The provider can return partial responses while generation is in progress."
+    },
+    "vision": {
+      "displayName": "Vision input",
+      "description": "The model can reason over images or visual attachments where Folian supports them."
+    },
+    "reasoning": {
+      "displayName": "Reasoning model",
+      "description": "The model is intended for deeper planning, analysis or structured reasoning tasks."
+    },
+    "toolCalling": {
+      "displayName": "Tool calling",
+      "description": "The model can call structured tools where Folian exposes them in future."
+    },
+    "jsonMode": {
+      "displayName": "JSON mode",
+      "description": "The model supports structured JSON-style output for extraction and review."
+    },
+    "promptCaching": {
+      "displayName": "Prompt caching",
+      "description": "The provider can cache stable prompt context where supported."
+    },
+    "mcpCompatible": {
+      "displayName": "Future MCP compatibility",
+      "description": "Reserved metadata for future plugin and tool registry compatibility."
+    }
+  }
+}

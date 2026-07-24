@@ -1,0 +1,18 @@
+{
+  "configurationVersion": 1,
+  "publishedAt": "2026-07-23T00:00:00.000Z",
+  "schemaVersion": "2026-07-23.v1",
+  "notes": [
+    {
+      "version": "0.1.0-beta.2",
+      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "channel": "beta",
+      "title": "Folian beta foundation",
+      "items": [
+        "Desktop-local writing project storage.",
+        "Structured project setup, manuscript editing, research and export workflows.",
+        "Remote model catalogue foundation."
+      ]
+    }
+  ]
+}

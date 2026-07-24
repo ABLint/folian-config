@@ -1,0 +1,21 @@
+{
+  "configurationVersion": 1,
+  "publishedAt": "2026-07-23T00:00:00.000Z",
+  "schemaVersion": "2026-07-23.v1",
+  "desktop": {
+    "stable": {
+      "version": "0.1.0-beta.2",
+      "minimumVersion": "0.1.0-beta.0",
+      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "mandatory": false,
+      "manifestUrl": "https://config.folian.app/v1/releases"
+    },
+    "beta": {
+      "version": "0.1.0-beta.2",
+      "minimumVersion": "0.1.0-beta.0",
+      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "mandatory": false,
+      "manifestUrl": "https://config.folian.app/v1/releases"
+    }
+  }
+}

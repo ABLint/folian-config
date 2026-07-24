@@ -1,0 +1,296 @@
+{
+  "configurationVersion": 1,
+  "publishedAt": "2026-07-23T00:00:00.000Z",
+  "schemaVersion": "2026-07-23.v1",
+  "providers": [
+    {
+      "id": "anthropic",
+      "displayName": "Anthropic",
+      "status": "available",
+      "models": [
+        {
+          "id": "claude-sonnet-4-6",
+          "provider": "anthropic",
+          "displayName": "Claude Sonnet 4.6",
+          "recommended": true,
+          "deprecated": false,
+          "tags": [
+            "recommended_for_writing",
+            "large_context"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": false,
+            "jsonMode": false,
+            "promptCaching": true,
+            "contextWindow": 200000,
+            "maxOutputTokens": 64000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "claude-opus-4-7",
+          "provider": "anthropic",
+          "displayName": "Claude Opus 4.7",
+          "recommended": true,
+          "deprecated": false,
+          "tags": [
+            "recommended_for_writing",
+            "large_context"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": false,
+            "jsonMode": false,
+            "promptCaching": true,
+            "contextWindow": 200000,
+            "maxOutputTokens": 64000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "claude-haiku-4-5",
+          "provider": "anthropic",
+          "displayName": "Claude Haiku 4.5",
+          "recommended": false,
+          "deprecated": false,
+          "tags": [
+            "fast"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": false,
+            "toolCalling": false,
+            "jsonMode": false,
+            "promptCaching": true,
+            "contextWindow": 200000,
+            "maxOutputTokens": 32000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "openai",
+      "displayName": "OpenAI",
+      "status": "available",
+      "models": [
+        {
+          "id": "gpt-4.1-mini",
+          "provider": "openai",
+          "displayName": "GPT-4.1 Mini",
+          "recommended": true,
+          "deprecated": false,
+          "tags": [
+            "recommended_for_writing",
+            "fast",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": false,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 32000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "gpt-4.1",
+          "provider": "openai",
+          "displayName": "GPT-4.1",
+          "recommended": true,
+          "deprecated": false,
+          "tags": [
+            "recommended_for_writing",
+            "large_context",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": false,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 32000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "o4-mini",
+          "provider": "openai",
+          "displayName": "o4 Mini",
+          "recommended": false,
+          "deprecated": false,
+          "tags": [
+            "reasoning",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": false,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 200000,
+            "maxOutputTokens": 100000,
+            "temperature": false,
+            "mcpCompatible": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "gemini",
+      "displayName": "Gemini",
+      "status": "available",
+      "models": [
+        {
+          "id": "gemini-2.0-flash",
+          "provider": "gemini",
+          "displayName": "Gemini 2.0 Flash",
+          "recommended": true,
+          "deprecated": false,
+          "tags": [
+            "fast",
+            "research",
+            "large_context"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": false,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 8192,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "gemini-1.5-pro",
+          "provider": "gemini",
+          "displayName": "Gemini 1.5 Pro",
+          "recommended": false,
+          "deprecated": false,
+          "tags": [
+            "large_context",
+            "research"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": false,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 2000000,
+            "maxOutputTokens": 8192,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "openrouter",
+      "displayName": "OpenRouter",
+      "status": "available",
+      "models": [
+        {
+          "id": "openai/gpt-4.1-mini",
+          "provider": "openrouter",
+          "displayName": "OpenAI / GPT-4.1 Mini",
+          "recommended": false,
+          "deprecated": false,
+          "tags": [
+            "fast",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": false,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 32000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "google/gemini-2.0-flash",
+          "provider": "openrouter",
+          "displayName": "Google / Gemini 2.0 Flash",
+          "recommended": false,
+          "deprecated": false,
+          "tags": [
+            "fast",
+            "research"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": false,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 8192,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "openai-compatible",
+      "displayName": "OpenAI-compatible endpoint",
+      "status": "available",
+      "models": [
+        {
+          "id": "llama3.1",
+          "provider": "openai-compatible",
+          "displayName": "Llama 3.1 / local compatible",
+          "recommended": false,
+          "deprecated": false,
+          "tags": [
+            "local_private"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": false,
+            "reasoning": false,
+            "toolCalling": false,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 128000,
+            "maxOutputTokens": 8192,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        }
+      ]
+    }
+  ]
+}

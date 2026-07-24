@@ -1,0 +1,25 @@
+{
+  "configurationVersion": 1,
+  "publishedAt": "2026-07-23T00:00:00.000Z",
+  "schemaVersion": "2026-07-23.v1",
+  "features": {
+    "desktopUpdates": {
+      "enabled": true,
+      "description": "Desktop update discovery and status UI.",
+      "channels": [
+        "stable",
+        "beta",
+        "development"
+      ]
+    },
+    "remoteModelCatalogue": {
+      "enabled": true,
+      "description": "Remote AI model and provider metadata for model pickers.",
+      "channels": [
+        "stable",
+        "beta",
+        "development"
+      ]
+    }
+  }
+}
