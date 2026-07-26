@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "audit:models": "node scripts/audit-models.mjs",
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint",
-    "test": "node scripts/validate-config.mjs",
+    "test": "node scripts/validate-config.mjs && node scripts/audit-models.mjs --offline",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

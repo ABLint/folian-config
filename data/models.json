@@ -1,7 +1,7 @@
 {
-  "configurationVersion": 2,
+  "configurationVersion": 3,
   "publishedAt": "2026-07-26T00:00:00.000Z",
-  "schemaVersion": "2026-07-23.v1",
+  "schemaVersion": "2026-07-26.models.v1",
   "providers": [
     {
       "id": "anthropic",
@@ -9,69 +9,143 @@
       "status": "available",
       "models": [
         {
-          "id": "claude-sonnet-4-6",
+          "id": "claude-sonnet-5-20251130",
           "provider": "anthropic",
-          "displayName": "Claude Sonnet 4.6",
+          "displayName": "Claude Sonnet 5",
           "recommended": true,
           "deprecated": false,
+          "lifecycleStatus": "stable",
+          "releasedAt": "2025-11-30",
+          "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis",
+            "structured_extraction",
+            "research",
+            "high_quality_reasoning"
+          ],
           "tags": [
             "recommended_for_writing",
-            "large_context"
+            "large_context",
+            "structured_output_friendly"
           ],
           "capabilities": {
             "streaming": true,
             "vision": true,
             "reasoning": true,
-            "toolCalling": false,
+            "toolCalling": true,
             "jsonMode": false,
             "promptCaching": true,
-            "contextWindow": 200000,
+            "contextWindow": 1000000,
             "maxOutputTokens": 64000,
-            "temperature": true,
+            "temperature": false,
             "mcpCompatible": false
           }
         },
         {
-          "id": "claude-opus-4-7",
+          "id": "claude-opus-5-20260225",
           "provider": "anthropic",
-          "displayName": "Claude Opus 4.7",
+          "displayName": "Claude Opus 5",
           "recommended": true,
           "deprecated": false,
+          "lifecycleStatus": "stable",
+          "releasedAt": "2026-02-25",
+          "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "manuscript_analysis",
+            "structured_extraction",
+            "research",
+            "high_quality_reasoning"
+          ],
           "tags": [
-            "recommended_for_writing",
-            "large_context"
+            "large_context",
+            "high_quality_reasoning",
+            "structured_output_friendly"
           ],
           "capabilities": {
             "streaming": true,
             "vision": true,
             "reasoning": true,
-            "toolCalling": false,
+            "toolCalling": true,
             "jsonMode": false,
             "promptCaching": true,
-            "contextWindow": 200000,
+            "contextWindow": 500000,
             "maxOutputTokens": 64000,
-            "temperature": true,
+            "temperature": false,
             "mcpCompatible": false
           }
         },
         {
-          "id": "claude-haiku-4-5",
+          "id": "claude-fable-5-20251029",
+          "provider": "anthropic",
+          "displayName": "Claude Fable 5",
+          "recommended": true,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "releasedAt": "2025-10-29",
+          "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis",
+            "structured_extraction",
+            "high_quality_reasoning"
+          ],
+          "tags": [
+            "recommended_for_writing",
+            "high_quality_reasoning"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": false,
+            "promptCaching": true,
+            "contextWindow": 200000,
+            "maxOutputTokens": 64000,
+            "temperature": false,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "claude-haiku-4-5-20251001",
           "provider": "anthropic",
           "displayName": "Claude Haiku 4.5",
-          "recommended": false,
+          "recommended": true,
           "deprecated": false,
+          "lifecycleStatus": "stable",
+          "releasedAt": "2025-10-01",
+          "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "low_cost_drafting",
+            "structured_extraction",
+            "research"
+          ],
           "tags": [
-            "fast"
+            "fast",
+            "low_cost_drafting"
           ],
           "capabilities": {
             "streaming": true,
             "vision": true,
-            "reasoning": false,
-            "toolCalling": false,
+            "reasoning": true,
+            "toolCalling": true,
             "jsonMode": false,
             "promptCaching": true,
             "contextWindow": 200000,
-            "maxOutputTokens": 32000,
+            "maxOutputTokens": 64000,
             "temperature": true,
             "mcpCompatible": false
           }
@@ -84,35 +158,23 @@
       "status": "available",
       "models": [
         {
-          "id": "gpt-4.1-mini",
+          "id": "gpt-5.6-terra",
           "provider": "openai",
-          "displayName": "GPT-4.1 Mini",
+          "displayName": "GPT-5.6 Terra",
           "recommended": true,
           "deprecated": false,
-          "tags": [
-            "recommended_for_writing",
-            "fast",
-            "structured_output_friendly"
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis",
+            "structured_extraction",
+            "research",
+            "high_quality_reasoning"
           ],
-          "capabilities": {
-            "streaming": true,
-            "vision": true,
-            "reasoning": false,
-            "toolCalling": true,
-            "jsonMode": true,
-            "promptCaching": false,
-            "contextWindow": 1000000,
-            "maxOutputTokens": 32000,
-            "temperature": true,
-            "mcpCompatible": false
-          }
-        },
-        {
-          "id": "gpt-4.1",
-          "provider": "openai",
-          "displayName": "GPT-4.1",
-          "recommended": true,
-          "deprecated": false,
           "tags": [
             "recommended_for_writing",
             "large_context",
@@ -121,14 +183,112 @@
           "capabilities": {
             "streaming": true,
             "vision": true,
-            "reasoning": false,
+            "reasoning": true,
             "toolCalling": true,
             "jsonMode": true,
-            "promptCaching": false,
-            "contextWindow": 1000000,
-            "maxOutputTokens": 32000,
+            "promptCaching": true,
+            "contextWindow": 400000,
+            "maxOutputTokens": 128000,
             "temperature": true,
-            "mcpCompatible": false
+            "mcpCompatible": true
+          }
+        },
+        {
+          "id": "gpt-5.6-luna",
+          "provider": "openai",
+          "displayName": "GPT-5.6 Luna",
+          "recommended": true,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "structured_extraction",
+            "research"
+          ],
+          "tags": [
+            "recommended_for_writing",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": true,
+            "contextWindow": 256000,
+            "maxOutputTokens": 64000,
+            "temperature": true,
+            "mcpCompatible": true
+          }
+        },
+        {
+          "id": "gpt-5.6-sol",
+          "provider": "openai",
+          "displayName": "GPT-5.6 Sol",
+          "recommended": true,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "low_cost_drafting",
+            "structured_extraction"
+          ],
+          "tags": [
+            "fast",
+            "low_cost_drafting",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": true,
+            "contextWindow": 256000,
+            "maxOutputTokens": 64000,
+            "temperature": true,
+            "mcpCompatible": true
+          }
+        },
+        {
+          "id": "o5-mini",
+          "provider": "openai",
+          "displayName": "o5 Mini",
+          "recommended": true,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "structured_extraction",
+            "high_quality_reasoning"
+          ],
+          "tags": [
+            "reasoning",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": true,
+            "contextWindow": 400000,
+            "maxOutputTokens": 128000,
+            "temperature": false,
+            "mcpCompatible": true
           }
         },
         {
@@ -136,18 +296,25 @@
           "provider": "openai",
           "displayName": "o4 Mini",
           "recommended": false,
-          "deprecated": false,
+          "deprecated": true,
+          "lifecycleStatus": "deprecated",
+          "replacementModelId": "o5-mini",
+          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [],
           "tags": [
-            "reasoning",
-            "structured_output_friendly"
+            "deprecated",
+            "reasoning"
           ],
           "capabilities": {
-            "streaming": false,
+            "streaming": true,
             "vision": true,
             "reasoning": true,
             "toolCalling": true,
             "jsonMode": true,
-            "promptCaching": false,
+            "promptCaching": true,
             "contextWindow": 200000,
             "maxOutputTokens": 100000,
             "temperature": false,
@@ -158,41 +325,130 @@
     },
     {
       "id": "gemini",
-      "displayName": "Gemini",
+      "displayName": "Google Gemini",
       "status": "available",
       "models": [
         {
-          "id": "gemini-2.0-flash",
+          "id": "gemini-3.6-flash",
           "provider": "gemini",
-          "displayName": "Gemini 2.0 Flash",
+          "displayName": "Gemini 3.6 Flash",
           "recommended": true,
           "deprecated": false,
-          "tags": [
-            "fast",
+          "lifecycleStatus": "stable",
+          "releasedAt": "2026-07-10",
+          "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "manuscript_analysis",
+            "structured_extraction",
             "research",
-            "large_context"
+            "high_quality_reasoning"
+          ],
+          "tags": [
+            "research",
+            "large_context",
+            "structured_output_friendly"
           ],
           "capabilities": {
             "streaming": true,
             "vision": true,
-            "reasoning": false,
+            "reasoning": true,
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": false,
-            "contextWindow": 1000000,
-            "maxOutputTokens": 8192,
+            "contextWindow": 1048576,
+            "maxOutputTokens": 65536,
             "temperature": true,
             "mcpCompatible": false
           }
         },
         {
-          "id": "gemini-1.5-pro",
+          "id": "gemini-3.6-flash-lite",
           "provider": "gemini",
-          "displayName": "Gemini 1.5 Pro",
-          "recommended": false,
+          "displayName": "Gemini 3.6 Flash-Lite",
+          "recommended": true,
           "deprecated": false,
+          "lifecycleStatus": "stable",
+          "releasedAt": "2026-07-10",
+          "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "low_cost_drafting",
+            "structured_extraction",
+            "research"
+          ],
           "tags": [
+            "fast",
+            "low_cost_drafting",
+            "research"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1048576,
+            "maxOutputTokens": 65536,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "gemini-2.5-pro",
+          "provider": "gemini",
+          "displayName": "Gemini 2.5 Pro",
+          "recommended": true,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis",
+            "research",
+            "high_quality_reasoning"
+          ],
+          "tags": [
+            "research",
             "large_context",
+            "high_quality_reasoning"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1048576,
+            "maxOutputTokens": 65536,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "gemini-2.0-flash",
+          "provider": "gemini",
+          "displayName": "Gemini 2.0 Flash",
+          "recommended": false,
+          "deprecated": true,
+          "lifecycleStatus": "deprecated",
+          "replacementModelId": "gemini-3.6-flash",
+          "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [],
+          "tags": [
+            "deprecated",
             "research"
           ],
           "capabilities": {
@@ -202,7 +458,7 @@
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": false,
-            "contextWindow": 2000000,
+            "contextWindow": 1048576,
             "maxOutputTokens": 8192,
             "temperature": true,
             "mcpCompatible": false
@@ -216,47 +472,138 @@
       "status": "available",
       "models": [
         {
-          "id": "openai/gpt-4.1-mini",
+          "id": "anthropic/claude-sonnet-5",
           "provider": "openrouter",
-          "displayName": "OpenAI / GPT-4.1 Mini",
-          "recommended": false,
+          "displayName": "Anthropic / Claude Sonnet 5",
+          "recommended": true,
           "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis",
+            "structured_extraction",
+            "research"
+          ],
           "tags": [
-            "fast",
+            "recommended_for_writing",
+            "large_context",
             "structured_output_friendly"
           ],
           "capabilities": {
             "streaming": true,
             "vision": true,
-            "reasoning": false,
+            "reasoning": true,
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": false,
             "contextWindow": 1000000,
-            "maxOutputTokens": 32000,
+            "maxOutputTokens": 128000,
+            "temperature": false,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "openai/gpt-5.6-terra",
+          "provider": "openrouter",
+          "displayName": "OpenAI / GPT-5.6 Terra",
+          "recommended": true,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis",
+            "structured_extraction",
+            "research",
+            "high_quality_reasoning"
+          ],
+          "tags": [
+            "recommended_for_writing",
+            "large_context",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1050000,
+            "maxOutputTokens": 128000,
+            "temperature": false,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "google/gemini-3.6-flash",
+          "provider": "openrouter",
+          "displayName": "Google / Gemini 3.6 Flash",
+          "recommended": true,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "manuscript_analysis",
+            "structured_extraction",
+            "research"
+          ],
+          "tags": [
+            "research",
+            "large_context",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1048576,
+            "maxOutputTokens": 65536,
             "temperature": true,
             "mcpCompatible": false
           }
         },
         {
-          "id": "google/gemini-2.0-flash",
+          "id": "anthropic/claude-haiku-4.5",
           "provider": "openrouter",
-          "displayName": "Google / Gemini 2.0 Flash",
-          "recommended": false,
+          "displayName": "Anthropic / Claude Haiku 4.5",
+          "recommended": true,
           "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
+          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "low_cost_drafting",
+            "structured_extraction"
+          ],
           "tags": [
             "fast",
-            "research"
+            "low_cost_drafting"
           ],
           "capabilities": {
             "streaming": true,
             "vision": true,
-            "reasoning": false,
+            "reasoning": true,
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": false,
-            "contextWindow": 1000000,
-            "maxOutputTokens": 8192,
+            "contextWindow": 200000,
+            "maxOutputTokens": 64000,
             "temperature": true,
             "mcpCompatible": false
           }
@@ -267,30 +614,7 @@
       "id": "openai-compatible",
       "displayName": "OpenAI-compatible endpoint",
       "status": "available",
-      "models": [
-        {
-          "id": "llama3.1",
-          "provider": "openai-compatible",
-          "displayName": "Llama 3.1 / local compatible",
-          "recommended": false,
-          "deprecated": false,
-          "tags": [
-            "local_private"
-          ],
-          "capabilities": {
-            "streaming": true,
-            "vision": false,
-            "reasoning": false,
-            "toolCalling": false,
-            "jsonMode": true,
-            "promptCaching": false,
-            "contextWindow": 128000,
-            "maxOutputTokens": 8192,
-            "temperature": true,
-            "mcpCompatible": false
-          }
-        }
-      ]
+      "models": []
     }
   ]
 }

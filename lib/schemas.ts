@@ -1,10 +1,27 @@
 import { z } from 'zod';
 
 export const configurationEnvelopeSchema = z.object({
-	configurationVersion: z.number().int().nonnegative(),
+	configurationVersion: z.number().int().positive(),
 	publishedAt: z.string().datetime(),
 	schemaVersion: z.string().min(1),
 });
+
+const lifecycleStatusSchema = z.enum(['stable', 'preview', 'experimental', 'deprecated', 'unavailable']);
+const compatibilityStatusSchema = z.enum([
+	'supported',
+	'adapter_limited',
+	'custom_model_required',
+	'unverified',
+	'unsupported',
+]);
+const recommendedUseCaseSchema = z.enum([
+	'long_form_writing',
+	'manuscript_analysis',
+	'structured_extraction',
+	'research',
+	'low_cost_drafting',
+	'high_quality_reasoning',
+]);
 
 export const modelCapabilitiesSchema = z.object({
 	streaming: z.boolean(),
@@ -25,6 +42,15 @@ export const modelSchema = z.object({
 	displayName: z.string().min(1).max(180),
 	recommended: z.boolean(),
 	deprecated: z.boolean(),
+	lifecycleStatus: lifecycleStatusSchema,
+	releasedAt: z.string().date().optional(),
+	deprecatedAt: z.string().date().optional(),
+	replacementModelId: z.string().min(1).max(160).optional(),
+	providerDocumentationUrl: z.string().url(),
+	lastVerifiedAt: z.string().datetime(),
+	minimumFolianVersion: z.string().min(1).max(40),
+	compatibilityStatus: compatibilityStatusSchema,
+	recommendedFor: z.array(recommendedUseCaseSchema).default([]),
 	capabilities: modelCapabilitiesSchema,
 	tags: z.array(z.string().min(1).max(80)).default([]),
 });

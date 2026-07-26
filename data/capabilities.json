@@ -1,7 +1,7 @@
 {
-  "configurationVersion": 1,
-  "publishedAt": "2026-07-23T00:00:00.000Z",
-  "schemaVersion": "2026-07-23.v1",
+  "configurationVersion": 2,
+  "publishedAt": "2026-07-26T00:00:00.000Z",
+  "schemaVersion": "2026-07-26.capabilities.v1",
   "capabilities": {
     "streaming": {
       "displayName": "Streaming responses",
@@ -26,6 +26,18 @@
     "promptCaching": {
       "displayName": "Prompt caching",
       "description": "The provider can cache stable prompt context where supported."
+    },
+    "contextWindow": {
+      "displayName": "Context window",
+      "description": "The documented maximum input and context token budget for the model."
+    },
+    "maxOutputTokens": {
+      "displayName": "Maximum output tokens",
+      "description": "The documented maximum generated output token budget for the model."
+    },
+    "temperature": {
+      "displayName": "Temperature control",
+      "description": "The provider allows callers to adjust sampling temperature for this model."
     },
     "mcpCompatible": {
       "displayName": "Future MCP compatibility",

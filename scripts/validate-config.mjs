@@ -21,6 +21,7 @@ function readJson(fileName) {
 function assertEnvelope(document, name) {
 	assert.equal(typeof document.configurationVersion, 'number', `${name} configurationVersion`);
 	assert.ok(Number.isInteger(document.configurationVersion), `${name} configurationVersion integer`);
+	assert.ok(document.configurationVersion > 0, `${name} configurationVersion positive`);
 	assert.equal(typeof document.publishedAt, 'string', `${name} publishedAt`);
 	assert.doesNotThrow(() => new Date(document.publishedAt).toISOString(), `${name} publishedAt date`);
 	assert.equal(typeof document.schemaVersion, 'string', `${name} schemaVersion`);
@@ -55,17 +56,41 @@ for (const documentName of requiredDocuments) {
 const models = readJson('models.json');
 assert.ok(Array.isArray(models.providers), 'models providers array');
 assert.ok(models.providers.length > 0, 'models providers populated');
+const providerIds = new Set(readJson('providers.json').providers.map((provider) => provider.id));
 for (const provider of models.providers) {
 	assert.equal(typeof provider.id, 'string', 'provider id');
+	assert.ok(providerIds.has(provider.id), `${provider.id} provider exists`);
 	assert.equal(typeof provider.displayName, 'string', `${provider.id} displayName`);
 	assert.ok(['available', 'degraded', 'deprecated', 'hidden'].includes(provider.status), `${provider.id} status`);
 	assert.ok(Array.isArray(provider.models), `${provider.id} models array`);
+	const providerModelIds = new Set();
 	for (const model of provider.models) {
 		assert.equal(model.provider, provider.id, `${model.id} provider matches parent`);
+		assert.ok(!providerModelIds.has(model.id), `${provider.id} duplicate model id ${model.id}`);
+		providerModelIds.add(model.id);
 		assert.equal(typeof model.id, 'string', `${model.id} id`);
 		assert.equal(typeof model.displayName, 'string', `${model.id} displayName`);
 		assert.equal(typeof model.recommended, 'boolean', `${model.id} recommended`);
 		assert.equal(typeof model.deprecated, 'boolean', `${model.id} deprecated`);
+		assert.ok(
+			['stable', 'preview', 'experimental', 'deprecated', 'unavailable'].includes(model.lifecycleStatus),
+			`${model.id} lifecycleStatus`
+		);
+		assert.equal(typeof model.providerDocumentationUrl, 'string', `${model.id} providerDocumentationUrl`);
+		assert.match(model.providerDocumentationUrl, /^https:\/\//, `${model.id} provider docs URL`);
+		assert.equal(typeof model.lastVerifiedAt, 'string', `${model.id} lastVerifiedAt`);
+		assert.equal(typeof model.minimumFolianVersion, 'string', `${model.id} minimumFolianVersion`);
+		assert.ok(
+			['supported', 'adapter_limited', 'custom_model_required', 'unverified', 'unsupported'].includes(
+				model.compatibilityStatus
+			),
+			`${model.id} compatibilityStatus`
+		);
+		assert.ok(Array.isArray(model.recommendedFor), `${model.id} recommendedFor`);
+		if (model.recommended) {
+			assert.equal(model.deprecated, false, `${model.id} recommended model is not deprecated`);
+			assert.ok(['supported', 'adapter_limited'].includes(model.compatibilityStatus), `${model.id} compatible`);
+		}
 		assertCapabilityShape(model.capabilities, model.id);
 	}
 }
@@ -82,7 +107,10 @@ for (const provider of providers.providers) {
 const responseHelper = readFileSync(join(root, 'lib/config-response.ts'), 'utf8');
 assert.match(responseHelper, /Cache-Control/);
 assert.match(responseHelper, /ETag/);
+assert.match(responseHelper, /Access-Control-Allow-Origin/);
+assert.match(responseHelper, /status:\s*503/);
 assert.match(responseHelper, /if-none-match/i);
+assert.match(responseHelper, /s-maxage=300, stale-while-revalidate=86400/);
 
 for (const endpoint of ['models', 'providers', 'releases', 'features', 'release-notes', 'capabilities']) {
 	const route = readFileSync(join(root, 'app/v1', endpoint, 'route.ts'), 'utf8');

@@ -70,6 +70,14 @@ All versioned endpoints return:
 
 Clients should send `If-None-Match` and reuse their local cache when the platform returns `304 Not Modified`.
 
+The model catalogue uses a faster publication policy than slower-moving configuration:
+
+```http
+Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=86400
+```
+
+This keeps model updates responsive while preserving ETag-based revalidation. Manual client refresh should bypass the local client cache, send `If-None-Match` when an ETag is known, and replace the local catalogue only when the service returns validated new data.
+
 ## Publishing Workflow
 
 Configuration changes should not require application code changes.
@@ -77,9 +85,12 @@ Configuration changes should not require application code changes.
 1. Edit the relevant JSON file in `data/`.
 2. Increment `configurationVersion`.
 3. Update `publishedAt`.
-4. Run `npm run test`.
-5. Commit.
-6. Deploy.
+4. Run `npm run audit:models` for model catalogue changes.
+5. Run `npm run test`, `npm run lint`, `npm run typecheck` and `npm run build`.
+6. Commit.
+7. Deploy.
+8. Verify the production endpoint.
+9. Verify Folian Studio and Folian Desktop clients refresh the catalogue.
 
 If Anthropic or OpenAI releases a new model, add it to `data/models.json`, validate, and deploy this repository. Desktop clients with remote catalogue support will see the model after their next refresh.
 
@@ -88,6 +99,7 @@ If Anthropic or OpenAI releases a new model, add it to `data/models.json`, valid
 Run:
 
 ```bash
+npm run audit:models
 npm run test
 npm run lint
 npm run typecheck
@@ -95,6 +107,15 @@ npm run build
 ```
 
 Invalid configuration should never be deployed. API routes also validate documents before serving them and return a safe unavailable response if validation fails.
+
+Provider API checks are optional. `npm run audit:models` uses local validation by default and will query official provider model-list APIs only when the relevant credentials or flags are supplied:
+
+- `OPENAI_API_KEY`
+- `ANTHROPIC_API_KEY`
+- `GEMINI_API_KEY` or `GOOGLE_API_KEY`
+- `OPENROUTER_API_KEY` or `FOLIAN_AUDIT_OPENROUTER=1`
+
+Secrets are used only for the audit process and are not required for Vercel runtime.
 
 ## Deployment
 

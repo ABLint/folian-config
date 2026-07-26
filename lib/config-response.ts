@@ -2,13 +2,18 @@ import { createHash } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import type { ZodType } from 'zod';
 
-const cacheControl = 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800';
+export const defaultConfigCacheControl =
+	'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800';
+export const modelCatalogCacheControl =
+	'public, max-age=300, s-maxage=300, stale-while-revalidate=86400';
 
 export function serveConfigDocument<T>(
 	request: NextRequest,
 	document: T,
-	schema: ZodType
+	schema: ZodType,
+	options: { cacheControl?: string } = {}
 ) {
+	const cacheControl = options.cacheControl ?? defaultConfigCacheControl;
 	const parsed = schema.safeParse(document);
 	if (!parsed.success) {
 		console.error('CONFIG_DOCUMENT_VALIDATION_FAILED', {
