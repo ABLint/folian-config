@@ -104,6 +104,31 @@ for (const provider of providers.providers) {
 	assert.equal(typeof provider.supportsCustomModelId, 'boolean', `${provider.id} supportsCustomModelId`);
 }
 
+const releases = readJson('releases.json');
+for (const channel of ['stable', 'beta']) {
+	const release = releases.desktop[channel];
+	assert.equal(release.channel, channel, `${channel} channel`);
+	assert.match(release.version, /^\d+\.\d+\.\d+/, `${channel} version`);
+	assert.match(release.minimumVersion, /^\d+\.\d+\.\d+/, `${channel} minimumVersion`);
+	assert.doesNotThrow(
+		() => new Date(release.publishedAt).toISOString(),
+		`${channel} publishedAt`
+	);
+	assert.equal(typeof release.mandatory, 'boolean', `${channel} mandatory`);
+	assert.ok(['arm64', 'x64', 'universal'].includes(release.architecture), `${channel} architecture`);
+	assert.match(release.minimumMacOSVersion, /^\d+\.\d+/, `${channel} minimum macOS`);
+	assert.match(release.dmgUrl, /^https:\/\//, `${channel} DMG URL`);
+	assert.match(release.releaseNotesUrl, /^https:\/\//, `${channel} release notes URL`);
+	assert.match(release.sha256, /^[a-f0-9]{64}$/, `${channel} SHA-256`);
+	assert.ok(Number.isInteger(release.fileSize) && release.fileSize > 0, `${channel} file size`);
+	assert.equal(release.manifestUrl, 'https://config.folian.app/v1/releases');
+	assert.match(
+		release.nativeFeedUrl,
+		new RegExp(`/desktop/${channel}/darwin-${release.architecture}\\.json$`),
+		`${channel} native feed`
+	);
+}
+
 const responseHelper = readFileSync(join(root, 'lib/config-response.ts'), 'utf8');
 assert.match(responseHelper, /Cache-Control/);
 assert.match(responseHelper, /ETag/);

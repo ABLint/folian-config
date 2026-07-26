@@ -2,6 +2,14 @@
 
 Folian Desktop uses `config.folian.app` as the long-term source of truth for shared release and AI configuration. The model catalogue lives outside the desktop binaries so new provider models can appear in macOS and Windows clients without a desktop release.
 
+Release visibility is published at:
+
+```http
+GET https://config.folian.app/v1/releases
+```
+
+The release document records DMG downloads, checksums, release notes, architecture and minimum operating-system support for stable and beta. Native application updates remain on the separate Squirrel.Mac feed at `updates.folian.app`.
+
 ## Remote Catalogue
 
 The canonical AI model endpoint is:

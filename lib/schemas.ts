@@ -80,22 +80,26 @@ export const providersDocumentSchema = configurationEnvelopeSchema.extend({
 	),
 });
 
+const desktopReleaseSchema = z.object({
+	version: z.string().min(1),
+	channel: z.enum(['stable', 'beta']),
+	minimumVersion: z.string().min(1),
+	publishedAt: z.string().datetime(),
+	mandatory: z.boolean(),
+	architecture: z.enum(['arm64', 'x64', 'universal']),
+	minimumMacOSVersion: z.string().min(1),
+	dmgUrl: z.string().url(),
+	releaseNotesUrl: z.string().url(),
+	sha256: z.string().regex(/^[a-f0-9]{64}$/),
+	fileSize: z.number().int().positive(),
+	manifestUrl: z.string().url(),
+	nativeFeedUrl: z.string().url(),
+});
+
 export const releasesDocumentSchema = configurationEnvelopeSchema.extend({
 	desktop: z.object({
-		stable: z.object({
-			version: z.string(),
-			minimumVersion: z.string(),
-			publishedAt: z.string().datetime(),
-			mandatory: z.boolean(),
-			manifestUrl: z.string().url(),
-		}),
-		beta: z.object({
-			version: z.string(),
-			minimumVersion: z.string(),
-			publishedAt: z.string().datetime(),
-			mandatory: z.boolean(),
-			manifestUrl: z.string().url(),
-		}),
+		stable: desktopReleaseSchema.extend({ channel: z.literal('stable') }),
+		beta: desktopReleaseSchema.extend({ channel: z.literal('beta') }),
 	}),
 });
 

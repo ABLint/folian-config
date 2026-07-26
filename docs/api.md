@@ -27,7 +27,19 @@ Returns provider-level metadata such as display name, status, auth mode, endpoin
 
 ## `GET /v1/releases`
 
-Returns desktop release metadata and manifest URLs.
+Returns release visibility and operational metadata for the stable and beta desktop channels:
+
+- version and minimum version
+- publication date
+- DMG download URL
+- release notes URL
+- SHA-256 checksum and file size
+- supported architecture
+- minimum macOS version
+- mandatory update flag
+- native updater feed URL
+
+The native Electron updater continues to use the channel-specific Squirrel.Mac JSON feed. This endpoint is for release visibility, website integration and operational control, not as a replacement for native updater metadata.
 
 ## `GET /v1/features`
 

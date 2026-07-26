@@ -1,21 +1,37 @@
 {
-  "configurationVersion": 1,
-  "publishedAt": "2026-07-23T00:00:00.000Z",
-  "schemaVersion": "2026-07-23.v1",
+  "configurationVersion": 2,
+  "publishedAt": "2026-07-26T18:38:54.537Z",
+  "schemaVersion": "2026-07-26.v2",
   "desktop": {
     "stable": {
       "version": "0.1.0-beta.2",
-      "minimumVersion": "0.1.0-beta.0",
-      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "channel": "stable",
+      "minimumVersion": "0.1.0-beta.2",
+      "publishedAt": "2026-07-27T00:00:00.000Z",
       "mandatory": false,
-      "manifestUrl": "https://config.folian.app/v1/releases"
+      "architecture": "arm64",
+      "minimumMacOSVersion": "12.0",
+      "dmgUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.2/Folian-0.1.0-beta.2-arm64.dmg",
+      "releaseNotesUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.2/0.1.0-beta.2.md",
+      "sha256": "434fc9c457e20b2765a5763556245e3c45849d3103cfe30bf5089964daeb74bf",
+      "fileSize": 218226786,
+      "manifestUrl": "https://config.folian.app/v1/releases",
+      "nativeFeedUrl": "https://updates.folian.app/desktop/stable/darwin-arm64.json"
     },
     "beta": {
-      "version": "0.1.0-beta.2",
-      "minimumVersion": "0.1.0-beta.0",
-      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "version": "0.1.0-beta.4",
+      "channel": "beta",
+      "minimumVersion": "0.1.0-beta.2",
+      "publishedAt": "2026-07-26T18:38:54.537Z",
       "mandatory": false,
-      "manifestUrl": "https://config.folian.app/v1/releases"
+      "architecture": "arm64",
+      "minimumMacOSVersion": "12.0",
+      "dmgUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.4/Folian-0.1.0-beta.4-arm64.dmg",
+      "releaseNotesUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.4/0.1.0-beta.4.md",
+      "sha256": "d759d8ce2aa6e15faa093ce00b3e15f23e5e9da9b13ff37e8c68500592051780",
+      "fileSize": 218233964,
+      "manifestUrl": "https://config.folian.app/v1/releases",
+      "nativeFeedUrl": "https://updates.folian.app/desktop/beta/darwin-arm64.json"
     }
   }
 }
