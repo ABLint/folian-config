@@ -7,7 +7,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint",
-    "test": "node scripts/validate-config.mjs && node scripts/audit-models.mjs --offline",
+    "test": "node scripts/validate-config.mjs && node scripts/validate-desktop-feed.mjs && node scripts/audit-models.mjs --offline",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

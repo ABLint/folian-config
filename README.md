@@ -29,8 +29,9 @@ Folian clients read public configuration directly from `config.folian.app`.
 ```text
 Folian Desktop macOS/Windows
   -> https://config.folian.app/v1/models
+  -> https://config.folian.app/desktop/beta/darwin-arm64.json
   -> local cache
-  -> model selector
+  -> model selector and native updater
 
 Folian Studio
   -> https://config.folian.app/v1/models
@@ -49,6 +50,14 @@ Versioned endpoints:
 - `GET /v1/features`
 - `GET /v1/release-notes`
 - `GET /v1/capabilities`
+
+Native desktop updater endpoints:
+
+- `GET /desktop`
+- `GET /desktop/beta/darwin-arm64.json`
+- `GET /desktop/stable/darwin-arm64.json`
+
+The `/desktop/*` endpoints preserve Electron/Squirrel.Mac feed format. They are intentionally not wrapped in the `/v1` configuration envelope.
 
 Every document includes:
 
@@ -93,6 +102,18 @@ Configuration changes should not require application code changes.
 9. Verify Folian Studio and Folian Desktop clients refresh the catalogue.
 
 If Anthropic or OpenAI releases a new model, add it to `data/models.json`, validate, and deploy this repository. Desktop clients with remote catalogue support will see the model after their next refresh.
+
+Native desktop update feeds live under `public/desktop/`. The Folian desktop release workflow stages accepted Squirrel.Mac feed JSON into this repository:
+
+```bash
+cd /Users/chrispascoe/Projects/novel-studio
+node scripts/stage-mac-update-feed.cjs beta
+cd ../folian-config
+npm test
+npm run build
+```
+
+Signed ZIP and DMG artifacts remain immutable GitHub Release assets. Do not replace published assets in place.
 
 ## Validation
 

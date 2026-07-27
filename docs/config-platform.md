@@ -17,6 +17,8 @@ Folian Studio
 
 The service is a lightweight stateless Next.js app deployed directly to Vercel.
 
+Native desktop updater feeds are served under `/desktop/*`. They deliberately keep Electron/Squirrel.Mac JSON format and are not wrapped in the versioned `/v1/*` configuration envelope.
+
 ## Versioning
 
 Every document includes:

@@ -8,7 +8,46 @@ Release visibility is published at:
 GET https://config.folian.app/v1/releases
 ```
 
-The release document records DMG downloads, checksums, release notes, architecture and minimum operating-system support for stable and beta. Native application updates remain on the separate Squirrel.Mac feed at `updates.folian.app`.
+The release document records DMG downloads, checksums, release notes, architecture and minimum operating-system support for stable and beta. Native application updates are served by the same configuration platform under `/desktop/*`, but remain a separate native Electron/Squirrel feed contract rather than a `/v1` configuration document.
+
+## Native Desktop Feed
+
+Folian Desktop uses Electron `autoUpdater` with the Squirrel.Mac JSON feed format:
+
+```http
+GET https://config.folian.app/desktop/beta/darwin-arm64.json
+GET https://config.folian.app/desktop/stable/darwin-arm64.json
+```
+
+`/desktop` is a compatibility alias for the current beta feed.
+
+The feed files live in:
+
+```text
+public/desktop/beta/darwin-arm64.json
+public/desktop/stable/darwin-arm64.json
+```
+
+These files must stay in native updater format:
+
+```json
+{
+  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.4/Folian-0.1.0-beta.4-macos-arm64.zip",
+  "name": "0.1.0-beta.4",
+  "notes": "Writer-facing release notes",
+  "pub_date": "2026-07-26T18:38:54.537Z"
+}
+```
+
+Do not wrap these files in `configurationVersion`, `publishedAt` or `schemaVersion`. Those envelope fields belong to `/v1/*` configuration APIs.
+
+Channel JSON uses:
+
+```http
+Cache-Control: public, max-age=60, s-maxage=60, stale-while-revalidate=300
+```
+
+Signed ZIP and DMG artifacts remain immutable GitHub release assets. Previous release assets must remain available so installed clients can update safely.
 
 ## Remote Catalogue
 

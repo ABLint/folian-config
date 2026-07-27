@@ -41,6 +41,29 @@ Returns release visibility and operational metadata for the stable and beta desk
 
 The native Electron updater continues to use the channel-specific Squirrel.Mac JSON feed. This endpoint is for release visibility, website integration and operational control, not as a replacement for native updater metadata.
 
+## `GET /desktop/beta/darwin-arm64.json`
+
+Returns the beta Squirrel.Mac JSON feed consumed by Electron `autoUpdater`.
+
+This endpoint is intentionally not a `/v1` configuration document. It preserves the native updater format:
+
+```json
+{
+  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.4/Folian-0.1.0-beta.4-macos-arm64.zip",
+  "name": "0.1.0-beta.4",
+  "notes": "Writer-facing release notes",
+  "pub_date": "2026-07-26T18:38:54.537Z"
+}
+```
+
+## `GET /desktop/stable/darwin-arm64.json`
+
+Returns the stable Squirrel.Mac JSON feed.
+
+## `GET /desktop`
+
+Compatibility alias for the active beta desktop feed.
+
 ## `GET /v1/features`
 
 Returns public feature switches by channel.
@@ -73,4 +96,10 @@ Other versioned endpoints use:
 
 ```http
 Cache-Control: public, max-age=300, s-maxage=86400, stale-while-revalidate=604800
+```
+
+Native desktop feed JSON uses:
+
+```http
+Cache-Control: public, max-age=60, s-maxage=60, stale-while-revalidate=300
 ```

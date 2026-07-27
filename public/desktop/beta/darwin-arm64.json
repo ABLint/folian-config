@@ -1,0 +1,6 @@
+{
+  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.4/Folian-0.1.0-beta.4-macos-arm64.zip",
+  "name": "0.1.0-beta.4",
+  "notes": "# Folian 0.1.0 beta 4\n\nThis beta completes the signed desktop update path and keeps project files separate from application updates.\n\n- Adds production beta update discovery, download and restart-to-install support.\n- Uses the remote AI model catalogue with validated offline fallback.\n- Corrects project archive filenames when changing export formats.\n- Preserves local projects, API keys, exports and backups during application updates.\n\nApplication updates replace only Folian itself. Your writing data remains in the separate Folian data folder.",
+  "pub_date": "2026-07-26T18:38:54.537Z"
+}
