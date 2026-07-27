@@ -25,17 +25,18 @@ The feed files live in:
 
 ```text
 public/desktop/beta/darwin-arm64.json
-public/desktop/stable/darwin-arm64.json
 ```
+
+The stable channel is intentionally inactive until Folian promotes a real stable desktop release. While inactive, `/desktop/stable/darwin-arm64.json` is served by an application route that returns a cacheable `404` JSON response rather than advertising an old beta release.
 
 These files must stay in native updater format:
 
 ```json
 {
-  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.4/Folian-0.1.0-beta.4-macos-arm64.zip",
-  "name": "0.1.0-beta.4",
+  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.5/Folian-0.1.0-beta.5-macos-arm64.zip",
+  "name": "0.1.0-beta.5",
   "notes": "Writer-facing release notes",
-  "pub_date": "2026-07-26T18:38:54.537Z"
+  "pub_date": "2026-07-27T08:37:12.074Z"
 }
 ```
 
@@ -48,6 +49,14 @@ Cache-Control: public, max-age=60, s-maxage=60, stale-while-revalidate=300
 ```
 
 Signed ZIP and DMG artifacts remain immutable GitHub release assets. Previous release assets must remain available so installed clients can update safely.
+
+`/v1/releases` uses:
+
+```http
+Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=86400
+```
+
+The shorter release metadata window allows urgent visibility, rollback and download-link corrections to publish quickly.
 
 ## Remote Catalogue
 
@@ -100,13 +109,13 @@ If validation fails, Folian should log `MODEL_CATALOG_VALIDATION_FAILED`, discar
 
 ## Cache Behaviour
 
-`/v1/models` uses:
+`/v1/models` and `/v1/releases` use:
 
 ```http
 Cache-Control: public, max-age=300, s-maxage=300, stale-while-revalidate=86400
 ```
 
-The shorter CDN freshness window allows urgent model catalogue corrections to publish quickly without disabling caching.
+The shorter CDN freshness window allows urgent model catalogue and release visibility corrections to publish quickly without disabling caching.
 
 ## Provider Metadata
 
@@ -119,6 +128,24 @@ The catalogue only lists providers Folian can currently route through:
 - OpenAI-compatible custom endpoints
 
 OpenAI-compatible custom endpoints intentionally have no global default model list. Users supply their own model ID because compatible endpoints vary by server.
+
+## Model Lifecycle Policy
+
+Folian separates model availability from model age. A model is not deprecated merely because a newer generation exists.
+
+Supported lifecycle values:
+
+| Status | Meaning | Default picker behavior |
+| --- | --- | --- |
+| `stable` | Current callable model supported by Folian adapters. | Visible. Recommended models appear first. |
+| `legacy_supported` | Older callable model that remains useful and provider-supported. | Visible under Older supported models. |
+| `preview` | Callable preview model with provider caveats. | Visible only when compatible and intentionally listed. |
+| `deprecated` | Still useful for migration metadata, but not recommended for new selections. | Hidden for new choices unless already saved. |
+| `unavailable` | Not callable through Folian or no longer provider-supported. | Not selectable. |
+
+Deprecated and unavailable models must not be marked `recommended`.
+
+Each major direct provider should expose at least one current model and, where a genuine verified model remains available, one older supported model. Do not fabricate older IDs to satisfy the picker policy.
 
 ## Publishing Workflow
 

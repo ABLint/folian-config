@@ -1,8 +1,21 @@
 {
-  "configurationVersion": 1,
-  "publishedAt": "2026-07-23T00:00:00.000Z",
-  "schemaVersion": "2026-07-23.v1",
+  "configurationVersion": 2,
+  "publishedAt": "2026-07-27T08:37:12.074Z",
+  "schemaVersion": "2026-07-27.v2",
   "notes": [
+    {
+      "version": "0.1.0-beta.5",
+      "publishedAt": "2026-07-27T08:37:12.074Z",
+      "channel": "beta",
+      "title": "Folian paid beta release candidate",
+      "items": [
+        "Uses config.folian.app for desktop update discovery and the remote AI model catalogue.",
+        "Adds verified current and older supported AI model choices.",
+        "Keeps the stable desktop channel inactive until a real stable release is promoted.",
+        "Protects partial project setting updates from clearing omitted fields.",
+        "Preserves local projects, encrypted API keys, exports and backups during application updates."
+      ]
+    },
     {
       "version": "0.1.0-beta.2",
       "publishedAt": "2026-07-23T00:00:00.000Z",

@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const publicDesktopDir = join(root, 'public', 'desktop');
-const channels = ['beta', 'stable'];
+const channels = ['beta'];
 
 for (const channel of channels) {
 	const filePath = join(publicDesktopDir, channel, 'darwin-arm64.json');
@@ -22,6 +22,20 @@ for (const channel of channels) {
 	assert.ok(feed.notes.length > 0, `${channel} feed notes populated`);
 	assert.equal(Number.isNaN(Date.parse(feed.pub_date)), false, `${channel} feed pub_date`);
 }
+
+const stableFilePath = join(publicDesktopDir, 'stable', 'darwin-arm64.json');
+assert.equal(existsSync(stableFilePath), false, 'stable channel does not publish a beta feed file');
+const stableRoute = readFileSync(
+	join(root, 'app/desktop/stable/darwin-arm64.json/route.ts'),
+	'utf8'
+);
+assert.match(stableRoute, /status:\s*'inactive'/, 'stable native feed returns inactive status');
+assert.match(stableRoute, /status:\s*404/, 'stable native feed returns 404 until stable release exists');
+assert.match(
+	stableRoute,
+	/max-age=60, s-maxage=60, stale-while-revalidate=300/,
+	'stable inactive route uses short cache policy'
+);
 
 const nextConfig = readFileSync(join(root, 'next.config.ts'), 'utf8');
 assert.match(nextConfig, /source:\s*'\/desktop'/, 'desktop compatibility route exists');

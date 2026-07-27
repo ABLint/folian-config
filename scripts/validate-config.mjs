@@ -73,7 +73,13 @@ for (const provider of models.providers) {
 		assert.equal(typeof model.recommended, 'boolean', `${model.id} recommended`);
 		assert.equal(typeof model.deprecated, 'boolean', `${model.id} deprecated`);
 		assert.ok(
-			['stable', 'preview', 'experimental', 'deprecated', 'unavailable'].includes(model.lifecycleStatus),
+			[
+				'stable',
+				'legacy_supported',
+				'preview',
+				'deprecated',
+				'unavailable',
+			].includes(model.lifecycleStatus),
 			`${model.id} lifecycleStatus`
 		);
 		assert.equal(typeof model.providerDocumentationUrl, 'string', `${model.id} providerDocumentationUrl`);
@@ -90,6 +96,10 @@ for (const provider of models.providers) {
 		if (model.recommended) {
 			assert.equal(model.deprecated, false, `${model.id} recommended model is not deprecated`);
 			assert.ok(['supported', 'adapter_limited'].includes(model.compatibilityStatus), `${model.id} compatible`);
+		}
+		if (model.lifecycleStatus === 'legacy_supported') {
+			assert.equal(model.deprecated, false, `${model.id} legacy-supported model is not deprecated`);
+			assert.ok(['supported', 'adapter_limited'].includes(model.compatibilityStatus), `${model.id} legacy-supported compatible`);
 		}
 		assertCapabilityShape(model.capabilities, model.id);
 	}
@@ -108,20 +118,31 @@ const releases = readJson('releases.json');
 for (const channel of ['stable', 'beta']) {
 	const release = releases.desktop[channel];
 	assert.equal(release.channel, channel, `${channel} channel`);
-	assert.match(release.version, /^\d+\.\d+\.\d+/, `${channel} version`);
-	assert.match(release.minimumVersion, /^\d+\.\d+\.\d+/, `${channel} minimumVersion`);
 	assert.doesNotThrow(
 		() => new Date(release.publishedAt).toISOString(),
 		`${channel} publishedAt`
 	);
 	assert.equal(typeof release.mandatory, 'boolean', `${channel} mandatory`);
+	assert.equal(release.manifestUrl, 'https://config.folian.app/v1/releases');
+	if (release.status === 'inactive') {
+		assert.equal(typeof release.reason, 'string', `${channel} inactive reason`);
+		assert.ok(release.reason.length > 0, `${channel} inactive reason populated`);
+		assert.match(
+			release.nativeFeedUrl,
+			new RegExp(`/desktop/${channel}/darwin-arm64\\.json$`),
+			`${channel} inactive native feed`
+		);
+		continue;
+	}
+	assert.equal(release.status, 'active', `${channel} active release status`);
+	assert.match(release.version, /^\d+\.\d+\.\d+/, `${channel} version`);
+	assert.match(release.minimumVersion, /^\d+\.\d+\.\d+/, `${channel} minimumVersion`);
 	assert.ok(['arm64', 'x64', 'universal'].includes(release.architecture), `${channel} architecture`);
 	assert.match(release.minimumMacOSVersion, /^\d+\.\d+/, `${channel} minimum macOS`);
 	assert.match(release.dmgUrl, /^https:\/\//, `${channel} DMG URL`);
 	assert.match(release.releaseNotesUrl, /^https:\/\//, `${channel} release notes URL`);
 	assert.match(release.sha256, /^[a-f0-9]{64}$/, `${channel} SHA-256`);
 	assert.ok(Number.isInteger(release.fileSize) && release.fileSize > 0, `${channel} file size`);
-	assert.equal(release.manifestUrl, 'https://config.folian.app/v1/releases');
 	assert.match(
 		release.nativeFeedUrl,
 		new RegExp(`/desktop/${channel}/darwin-${release.architecture}\\.json$`),
@@ -142,5 +163,8 @@ for (const endpoint of ['models', 'providers', 'releases', 'features', 'release-
 	assert.match(route, /serveConfigDocument/, `${endpoint} route uses validated response helper`);
 	assert.match(route, /force-static/, `${endpoint} route is static`);
 }
+
+const releasesRoute = readFileSync(join(root, 'app/v1/releases/route.ts'), 'utf8');
+assert.match(releasesRoute, /releaseConfigCacheControl/, 'releases route uses short release cache policy');
 
 console.log('Folian configuration documents validated.');

@@ -1,7 +1,7 @@
 {
-  "configurationVersion": 3,
-  "publishedAt": "2026-07-26T00:00:00.000Z",
-  "schemaVersion": "2026-07-26.models.v1",
+  "configurationVersion": 5,
+  "publishedAt": "2026-07-27T12:00:00.000Z",
+  "schemaVersion": "2026-07-27.models.v3",
   "providers": [
     {
       "id": "anthropic",
@@ -9,15 +9,14 @@
       "status": "available",
       "models": [
         {
-          "id": "claude-sonnet-5-20251130",
+          "id": "claude-sonnet-5",
           "provider": "anthropic",
           "displayName": "Claude Sonnet 5",
           "recommended": true,
           "deprecated": false,
           "lifecycleStatus": "stable",
-          "releasedAt": "2025-11-30",
           "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -40,21 +39,20 @@
             "jsonMode": false,
             "promptCaching": true,
             "contextWindow": 1000000,
-            "maxOutputTokens": 64000,
+            "maxOutputTokens": 128000,
             "temperature": false,
             "mcpCompatible": false
           }
         },
         {
-          "id": "claude-opus-5-20260225",
+          "id": "claude-opus-5",
           "provider": "anthropic",
           "displayName": "Claude Opus 5",
           "recommended": true,
           "deprecated": false,
           "lifecycleStatus": "stable",
-          "releasedAt": "2026-02-25",
           "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -75,22 +73,21 @@
             "toolCalling": true,
             "jsonMode": false,
             "promptCaching": true,
-            "contextWindow": 500000,
-            "maxOutputTokens": 64000,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 128000,
             "temperature": false,
             "mcpCompatible": false
           }
         },
         {
-          "id": "claude-fable-5-20251029",
+          "id": "claude-fable-5",
           "provider": "anthropic",
           "displayName": "Claude Fable 5",
           "recommended": true,
           "deprecated": false,
           "lifecycleStatus": "stable",
-          "releasedAt": "2025-10-29",
           "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -110,8 +107,8 @@
             "toolCalling": true,
             "jsonMode": false,
             "promptCaching": true,
-            "contextWindow": 200000,
-            "maxOutputTokens": 64000,
+            "contextWindow": 1000000,
+            "maxOutputTokens": 128000,
             "temperature": false,
             "mcpCompatible": false
           }
@@ -125,7 +122,7 @@
           "lifecycleStatus": "stable",
           "releasedAt": "2025-10-01",
           "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -136,6 +133,40 @@
           "tags": [
             "fast",
             "low_cost_drafting"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": false,
+            "promptCaching": true,
+            "contextWindow": 200000,
+            "maxOutputTokens": 64000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "claude-sonnet-4-20250514",
+          "provider": "anthropic",
+          "displayName": "Claude Sonnet 4",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "legacy_supported",
+          "releasedAt": "2025-05-14",
+          "providerDocumentationUrl": "https://docs.claude.com/en/docs/about-claude/models/overview",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis"
+          ],
+          "tags": [
+            "older_supported",
+            "large_context",
+            "structured_output_friendly"
           ],
           "capabilities": {
             "streaming": true,
@@ -165,7 +196,7 @@
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -187,7 +218,7 @@
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": true,
-            "contextWindow": 400000,
+            "contextWindow": 1050000,
             "maxOutputTokens": 128000,
             "temperature": true,
             "mcpCompatible": true
@@ -201,7 +232,7 @@
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -220,8 +251,8 @@
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": true,
-            "contextWindow": 256000,
-            "maxOutputTokens": 64000,
+            "contextWindow": 1050000,
+            "maxOutputTokens": 128000,
             "temperature": true,
             "mcpCompatible": true
           }
@@ -234,7 +265,7 @@
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -253,29 +284,30 @@
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": true,
-            "contextWindow": 256000,
-            "maxOutputTokens": 64000,
+            "contextWindow": 1050000,
+            "maxOutputTokens": 128000,
             "temperature": true,
             "mcpCompatible": true
           }
         },
         {
-          "id": "o5-mini",
+          "id": "gpt-4.1",
           "provider": "openai",
-          "displayName": "o5 Mini",
-          "recommended": true,
+          "displayName": "GPT-4.1",
+          "recommended": false,
           "deprecated": false,
-          "lifecycleStatus": "stable",
-          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lifecycleStatus": "legacy_supported",
+          "releasedAt": "2025-04-14",
+          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-4.1",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
-            "structured_extraction",
-            "high_quality_reasoning"
+            "long_form_writing",
+            "structured_extraction"
           ],
           "tags": [
-            "reasoning",
+            "older_supported",
             "structured_output_friendly"
           ],
           "capabilities": {
@@ -285,9 +317,9 @@
             "toolCalling": true,
             "jsonMode": true,
             "promptCaching": true,
-            "contextWindow": 400000,
-            "maxOutputTokens": 128000,
-            "temperature": false,
+            "contextWindow": 1047576,
+            "maxOutputTokens": 32768,
+            "temperature": true,
             "mcpCompatible": true
           }
         },
@@ -298,9 +330,9 @@
           "recommended": false,
           "deprecated": true,
           "lifecycleStatus": "deprecated",
-          "replacementModelId": "o5-mini",
+          "replacementModelId": "gpt-5.6-sol",
           "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [],
@@ -335,9 +367,8 @@
           "recommended": true,
           "deprecated": false,
           "lifecycleStatus": "stable",
-          "releasedAt": "2026-07-10",
           "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -365,15 +396,14 @@
           }
         },
         {
-          "id": "gemini-3.6-flash-lite",
+          "id": "gemini-3.5-flash-lite",
           "provider": "gemini",
-          "displayName": "Gemini 3.6 Flash-Lite",
+          "displayName": "Gemini 3.5 Flash-Lite",
           "recommended": true,
           "deprecated": false,
           "lifecycleStatus": "stable",
-          "releasedAt": "2026-07-10",
           "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -403,20 +433,20 @@
           "id": "gemini-2.5-pro",
           "provider": "gemini",
           "displayName": "Gemini 2.5 Pro",
-          "recommended": true,
+          "recommended": false,
           "deprecated": false,
-          "lifecycleStatus": "stable",
+          "lifecycleStatus": "legacy_supported",
           "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
             "long_form_writing",
             "manuscript_analysis",
-            "research",
-            "high_quality_reasoning"
+            "research"
           ],
           "tags": [
+            "older_supported",
             "research",
             "large_context",
             "high_quality_reasoning"
@@ -443,7 +473,7 @@
           "lifecycleStatus": "deprecated",
           "replacementModelId": "gemini-3.6-flash",
           "providerDocumentationUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [],
@@ -479,7 +509,7 @@
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -514,7 +544,7 @@
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -550,7 +580,7 @@
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -584,7 +614,7 @@
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
-          "lastVerifiedAt": "2026-07-26T00:00:00.000Z",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
           "minimumFolianVersion": "0.1.0",
           "compatibilityStatus": "supported",
           "recommendedFor": [
@@ -604,6 +634,104 @@
             "promptCaching": false,
             "contextWindow": 200000,
             "maxOutputTokens": 64000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "anthropic/claude-sonnet-4",
+          "provider": "openrouter",
+          "displayName": "Anthropic / Claude Sonnet 4",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "legacy_supported",
+          "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "manuscript_analysis"
+          ],
+          "tags": [
+            "older_supported",
+            "large_context"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 200000,
+            "maxOutputTokens": 64000,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "openai/gpt-4.1",
+          "provider": "openrouter",
+          "displayName": "OpenAI / GPT-4.1",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "legacy_supported",
+          "releasedAt": "2025-04-14",
+          "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "long_form_writing",
+            "structured_extraction"
+          ],
+          "tags": [
+            "older_supported",
+            "structured_output_friendly"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1047576,
+            "maxOutputTokens": 32768,
+            "temperature": true,
+            "mcpCompatible": false
+          }
+        },
+        {
+          "id": "google/gemini-2.5-pro",
+          "provider": "openrouter",
+          "displayName": "Google / Gemini 2.5 Pro",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "legacy_supported",
+          "providerDocumentationUrl": "https://openrouter.ai/api/v1/models",
+          "lastVerifiedAt": "2026-07-27T12:00:00.000Z",
+          "minimumFolianVersion": "0.1.0",
+          "compatibilityStatus": "supported",
+          "recommendedFor": [
+            "manuscript_analysis",
+            "research"
+          ],
+          "tags": [
+            "older_supported",
+            "research",
+            "large_context"
+          ],
+          "capabilities": {
+            "streaming": true,
+            "vision": true,
+            "reasoning": true,
+            "toolCalling": true,
+            "jsonMode": true,
+            "promptCaching": false,
+            "contextWindow": 1048576,
+            "maxOutputTokens": 65536,
             "temperature": true,
             "mcpCompatible": false
           }

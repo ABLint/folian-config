@@ -6,7 +6,13 @@ export const configurationEnvelopeSchema = z.object({
 	schemaVersion: z.string().min(1),
 });
 
-const lifecycleStatusSchema = z.enum(['stable', 'preview', 'experimental', 'deprecated', 'unavailable']);
+const lifecycleStatusSchema = z.enum([
+	'stable',
+	'legacy_supported',
+	'preview',
+	'deprecated',
+	'unavailable',
+]);
 const compatibilityStatusSchema = z.enum([
 	'supported',
 	'adapter_limited',
@@ -81,6 +87,7 @@ export const providersDocumentSchema = configurationEnvelopeSchema.extend({
 });
 
 const desktopReleaseSchema = z.object({
+	status: z.literal('active').default('active'),
 	version: z.string().min(1),
 	channel: z.enum(['stable', 'beta']),
 	minimumVersion: z.string().min(1),
@@ -96,9 +103,22 @@ const desktopReleaseSchema = z.object({
 	nativeFeedUrl: z.string().url(),
 });
 
+const inactiveDesktopChannelSchema = z.object({
+	status: z.literal('inactive'),
+	channel: z.enum(['stable', 'beta']),
+	publishedAt: z.string().datetime(),
+	reason: z.string().min(1),
+	manifestUrl: z.string().url(),
+	nativeFeedUrl: z.string().url(),
+	mandatory: z.boolean().default(false),
+});
+
 export const releasesDocumentSchema = configurationEnvelopeSchema.extend({
 	desktop: z.object({
-		stable: desktopReleaseSchema.extend({ channel: z.literal('stable') }),
+		stable: z.union([
+			desktopReleaseSchema.extend({ channel: z.literal('stable') }),
+			inactiveDesktopChannelSchema.extend({ channel: z.literal('stable') }),
+		]),
 		beta: desktopReleaseSchema.extend({ channel: z.literal('beta') }),
 	}),
 });

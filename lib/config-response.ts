@@ -6,6 +6,8 @@ export const defaultConfigCacheControl =
 	'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800';
 export const modelCatalogCacheControl =
 	'public, max-age=300, s-maxage=300, stale-while-revalidate=86400';
+export const releaseConfigCacheControl =
+	'public, max-age=300, s-maxage=300, stale-while-revalidate=86400';
 
 export function serveConfigDocument<T>(
 	request: NextRequest,

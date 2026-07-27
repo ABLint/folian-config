@@ -7,7 +7,13 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(root, 'data');
 const offline = process.argv.includes('--offline');
 
-const lifecycleStatuses = new Set(['stable', 'preview', 'experimental', 'deprecated', 'unavailable']);
+const lifecycleStatuses = new Set([
+	'stable',
+	'legacy_supported',
+	'preview',
+	'deprecated',
+	'unavailable',
+]);
 const compatibilityStatuses = new Set([
 	'supported',
 	'adapter_limited',
@@ -162,6 +168,14 @@ function auditLocalCatalogue() {
 					`${model.id} recommended model must be Folian-compatible`
 				);
 				assert.ok((model.recommendedFor ?? []).length > 0, `${model.id} recommended model has use cases`);
+			}
+			if (model.lifecycleStatus === 'legacy_supported') {
+				assert.equal(model.deprecated, false, `${model.id} legacy-supported model must not be deprecated`);
+				assert.notEqual(model.recommended, true, `${model.id} legacy-supported model should not be first-choice recommended`);
+				assert.ok(
+					model.compatibilityStatus === 'supported' || model.compatibilityStatus === 'adapter_limited',
+					`${model.id} legacy-supported model must remain Folian-compatible`
+				);
 			}
 		}
 	}
