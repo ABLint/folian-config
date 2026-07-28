@@ -8,7 +8,7 @@ Base URL:
 
 Returns the AI model catalogue used by Folian clients.
 
-Includes provider status, model metadata, recommendation flags, deprecation flags and capabilities.
+Includes provider status, model metadata, recommendation flags, deprecation flags and capabilities. `recommended` is reserved for one or two clear first-choice models per provider; other current supported models remain available as advanced choices.
 
 The model catalogue response includes lifecycle and audit metadata for each model:
 

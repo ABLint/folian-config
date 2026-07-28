@@ -137,13 +137,13 @@ Supported lifecycle values:
 
 | Status | Meaning | Default picker behavior |
 | --- | --- | --- |
-| `stable` | Current callable model supported by Folian adapters. | Visible. Recommended models appear first. |
+| `stable` | Current callable model supported by Folian adapters. | Visible. One or two writer-facing recommendations appear first; the rest appear under Advanced models. |
 | `legacy_supported` | Older callable model that remains useful and provider-supported. | Visible under Older supported models. |
 | `preview` | Callable preview model with provider caveats. | Visible only when compatible and intentionally listed. |
 | `deprecated` | Still useful for migration metadata, but not recommended for new selections. | Hidden for new choices unless already saved. |
 | `unavailable` | Not callable through Folian or no longer provider-supported. | Not selectable. |
 
-Deprecated and unavailable models must not be marked `recommended`.
+Deprecated and unavailable models must not be marked `recommended`. Stable models should only be marked `recommended` when they are clear first-choice defaults for everyday Folian writing work; specialized stable models should remain selectable under Advanced models.
 
 Each major direct provider should expose at least one current model and, where a genuine verified model remains available, one older supported model. Do not fabricate older IDs to satisfy the picker policy.
 
