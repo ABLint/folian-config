@@ -1,8 +1,20 @@
 {
-  "configurationVersion": 2,
-  "publishedAt": "2026-07-27T08:37:12.074Z",
-  "schemaVersion": "2026-07-27.v2",
+  "configurationVersion": 3,
+  "publishedAt": "2026-07-28T11:30:44.015Z",
+  "schemaVersion": "2026-07-28.v3",
   "notes": [
+    {
+      "version": "0.1.0-beta.7",
+      "publishedAt": "2026-07-28T11:30:44.015Z",
+      "channel": "beta",
+      "title": "Folian 0.1.0 beta 7",
+      "items": [
+        "Adds Folian > Check for Updates so writers can check the beta update feed directly.",
+        "Makes update checking, availability, download, and failure states clearer.",
+        "Refines AI model choices into recommended, advanced, and older supported groups.",
+        "Corrects macOS artifact packaging and verifies both DMG and updater ZIP contents before publication."
+      ]
+    },
     {
       "version": "0.1.0-beta.5",
       "publishedAt": "2026-07-27T08:37:12.074Z",
