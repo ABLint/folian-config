@@ -1,7 +1,7 @@
 {
-  "configurationVersion": 5,
-  "publishedAt": "2026-07-28T11:30:44.015Z",
-  "schemaVersion": "2026-07-28.v5",
+  "configurationVersion": 6,
+  "publishedAt": "2026-07-28T12:33:00.000Z",
+  "schemaVersion": "2026-07-28.v6",
   "desktop": {
     "stable": {
       "status": "inactive",
@@ -14,17 +14,17 @@
     },
     "beta": {
       "status": "active",
-      "version": "0.1.0-beta.7",
+      "version": "0.1.0-beta.5",
       "channel": "beta",
       "minimumVersion": "0.1.0-beta.2",
-      "publishedAt": "2026-07-28T11:30:44.015Z",
+      "publishedAt": "2026-07-27T08:37:12.074Z",
       "mandatory": false,
       "architecture": "arm64",
       "minimumMacOSVersion": "12.0",
-      "dmgUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.7/Folian-0.1.0-beta.7-arm64.dmg",
-      "releaseNotesUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.7/0.1.0-beta.7.md",
-      "sha256": "275f107e09bd892c4b81125e15bd24bdd0e222a515cb9649cb5a62b73a5eb7e3",
-      "fileSize": 218002468,
+      "dmgUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.5/Folian-0.1.0-beta.5-arm64.dmg",
+      "releaseNotesUrl": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.5/0.1.0-beta.5.md",
+      "sha256": "deccd90116827b754757dd2a6d2614b8a1489583bece6fe74632855ae9bab4e2",
+      "fileSize": 217987275,
       "manifestUrl": "https://config.folian.app/v1/releases",
       "nativeFeedUrl": "https://config.folian.app/desktop/beta/darwin-arm64.json"
     }
