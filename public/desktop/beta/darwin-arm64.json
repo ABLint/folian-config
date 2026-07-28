@@ -1,6 +1,6 @@
 {
-  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.6/Folian-0.1.0-beta.6-macos-arm64.zip",
-  "name": "0.1.0-beta.6",
-  "notes": "# Folian 0.1.0 beta 6\n\nThis beta restores manual desktop update discovery and makes the AI model picker calmer for first paid-beta testers.\n\n- Adds a native `Folian > Check for Updates...` menu item for packaged desktop builds.\n- Uses the existing signed desktop update feed without changing the updater architecture.\n- Shows clear update check states for checking, up to date, update available, update ready and connection failures.\n- Groups AI model choices into Recommended, Advanced models and Older supported models.\n- Keeps only the clearest everyday writing models marked as recommended while preserving advanced model flexibility.\n- Preserves all beta 5 release engineering improvements, including config.folian.app update discovery, remote model catalogue refresh, local writing data separation, exports, backups and encrypted API key storage.\n\nApplication updates replace only Folian itself. Your writing projects, local files, saved API keys, exports and backups remain separate from the application.",
-  "pub_date": "2026-07-28T03:03:11.858Z"
+  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.5/Folian-0.1.0-beta.5-macos-arm64.zip",
+  "name": "0.1.0-beta.5",
+  "notes": "# Folian 0.1.0 beta 5\n\nThis beta tightens the production update path and model catalogue before the paid beta release candidate.\n\n- Uses `config.folian.app` as the desktop update feed and remote model catalogue source.\n- Corrects the public AI model catalogue to verified provider model IDs.\n- Keeps the stable desktop channel inactive until Folian publishes a real stable release.\n- Protects partial project setting updates from clearing omitted project fields.\n- Keeps local writing projects, encrypted API keys, exports and backups separate from application updates.\n\nApplication updates replace only Folian itself. Your writing data remains in the separate Folian data folder.",
+  "pub_date": "2026-07-27T08:37:12.074Z"
 }
