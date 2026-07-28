@@ -17,7 +17,16 @@ const nextConfig: NextConfig = {
 				],
 			},
 			{
-				source: '/desktop/:channel(beta|stable)/:feed*.json',
+				source: '/desktop/beta/:feed*.json',
+				headers: [
+					{ key: 'Access-Control-Allow-Origin', value: '*' },
+					{ key: 'Cache-Control', value: 'private, no-store' },
+					{ key: 'Content-Type', value: 'application/json; charset=utf-8' },
+					{ key: 'Vary', value: 'User-Agent' },
+				],
+			},
+			{
+				source: '/desktop/stable/:feed*.json',
 				headers: [
 					{ key: 'Access-Control-Allow-Origin', value: '*' },
 					{
