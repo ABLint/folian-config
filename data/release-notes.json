@@ -1,8 +1,21 @@
 {
-  "configurationVersion": 4,
-  "publishedAt": "2026-07-28T12:33:00.000Z",
-  "schemaVersion": "2026-07-28.v4",
+  "configurationVersion": 5,
+  "publishedAt": "2026-07-28T16:19:57.748Z",
+  "schemaVersion": "2026-07-28.v5",
   "notes": [
+    {
+      "version": "0.1.0-beta.8",
+      "publishedAt": "2026-07-28T16:19:57.748Z",
+      "channel": "beta",
+      "title": "Folian beta 8",
+      "items": [
+        "Adds a native Check for Updates command to the Folian application menu.",
+        "Reports the installed release as up to date without downloading the same version again.",
+        "Makes update checking, availability, download and failure states clearer.",
+        "Refines AI model choices into recommended, advanced and older supported groups.",
+        "Adds independent local and GitHub download verification for release artifacts."
+      ]
+    },
     {
       "version": "0.1.0-beta.5",
       "publishedAt": "2026-07-27T08:37:12.074Z",

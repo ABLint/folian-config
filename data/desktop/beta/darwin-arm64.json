@@ -1,6 +1,6 @@
 {
-  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.5/Folian-0.1.0-beta.5-macos-arm64.zip",
-  "name": "0.1.0-beta.5",
-  "notes": "# Folian 0.1.0 beta 5\n\nThis beta tightens the production update path and model catalogue before the paid beta release candidate.\n\n- Uses `config.folian.app` as the desktop update feed and remote AI model catalogue source.\n- Corrects the public AI model catalogue to verified provider model IDs.\n- Keeps the stable desktop channel inactive until Folian publishes a real stable release.\n- Protects partial project setting updates from clearing omitted project fields.\n- Keeps local writing projects, encrypted API keys, exports and backups separate from application updates.\n\nApplication updates replace only Folian itself. Your writing data remains in the separate Folian data folder.",
-  "pub_date": "2026-07-27T08:37:12.074Z"
+  "url": "https://github.com/ABLint/folian-config/releases/download/v0.1.0-beta.8/Folian-0.1.0-beta.8-macos-arm64.zip",
+  "name": "0.1.0-beta.8",
+  "notes": "# Folian 0.1.0 beta 8\n\nThis release replaces the withdrawn Beta 7 build with a corrected macOS update check and the independently verified release packaging safeguards introduced during Beta 7.\n\n- Adds Folian > Check for Updates so writers can check the beta update feed directly.\n- Reports the installed release as up to date without asking Squirrel.Mac to download the same version again.\n- Makes update checking, availability, download, and failure states clearer.\n- Refines AI model choices into recommended, advanced, and older supported groups.\n- Verifies DMG and updater ZIP contents locally and after GitHub download before feed publication.\n\nApplication updates replace only Folian itself. Your projects, encrypted provider keys, exports, backups, and local settings remain in Folian's separate data folder.",
+  "pub_date": "2026-07-28T16:19:57.748Z"
 }
