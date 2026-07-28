@@ -1,8 +1,22 @@
 {
-  "configurationVersion": 2,
-  "publishedAt": "2026-07-27T08:37:12.074Z",
-  "schemaVersion": "2026-07-27.v2",
+  "configurationVersion": 3,
+  "publishedAt": "2026-07-28T03:03:11.858Z",
+  "schemaVersion": "2026-07-28.v3",
   "notes": [
+    {
+      "version": "0.1.0-beta.6",
+      "publishedAt": "2026-07-28T03:03:11.858Z",
+      "channel": "beta",
+      "title": "Folian 0.1.0 beta 6",
+      "items": [
+        "Adds a native `Folian > Check for Updates...` menu item for packaged desktop builds.",
+        "Uses the existing signed desktop update feed without changing the updater architecture.",
+        "Shows clear update check states for checking, up to date, update available, update ready and connection failures.",
+        "Groups AI model choices into Recommended, Advanced models and Older supported models.",
+        "Keeps only the clearest everyday writing models marked as recommended while preserving advanced model flexibility.",
+        "Preserves all beta 5 release engineering improvements, including config.folian.app update discovery, remote model catalogue refresh, local writing data separation, exports, backups and encrypted API key storage."
+      ]
+    },
     {
       "version": "0.1.0-beta.5",
       "publishedAt": "2026-07-27T08:37:12.074Z",
