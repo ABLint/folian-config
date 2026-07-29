@@ -1,8 +1,28 @@
 {
-  "configurationVersion": 6,
-  "publishedAt": "2026-07-29T03:57:15.346Z",
-  "schemaVersion": "2026-07-29.v6",
+  "configurationVersion": 7,
+  "publishedAt": "2026-07-29T10:28:23.886Z",
+  "schemaVersion": "2026-07-29.v7",
   "notes": [
+    {
+      "version": "0.1.0-beta.10",
+      "publishedAt": "2026-07-29T10:28:23.886Z",
+      "channel": "beta",
+      "title": "Folian Beta 0.10",
+      "items": [
+        "Switch between Standard and Focused Writing from the manuscript toolbar.",
+        "Keep the manuscript central while real project context and optional Folian intelligence remain available beside it.",
+        "Move through chapters and scenes without leaving the focused view.",
+        "Use Ask, Memory, Editorial and History from an independently scrollable context panel.",
+        "Open project context as an accessible drawer on smaller windows and mobile Studio layouts.",
+        "Return quickly to Chapters, Editing or Progress when broader project work is needed.",
+        "Retain each project's preferred writing view and context-panel state on the current device.",
+        "Use Folian without AI; Memory and project records remain available when no provider is connected.",
+        "Use the native View → Focused Writing command on desktop.",
+        "Benefit from shared behavior and terminology across Folian Desktop and Folian Studio.",
+        "Focused Writing preferences are device-specific rather than synchronized between devices.",
+        "Desktop filesystem tools and updates remain desktop-only. Authentication and cloud persistence remain Studio-only."
+      ]
+    },
     {
       "version": "0.1.0-beta.9",
       "publishedAt": "2026-07-29T03:57:15.346Z",
