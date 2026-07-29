@@ -24,8 +24,12 @@ GET https://config.folian.app/desktop/stable/darwin-arm64.json
 The feed files live in:
 
 ```text
-public/desktop/beta/darwin-arm64.json
+data/desktop/beta/darwin-arm64.json
 ```
+
+The version-aware route imports this file directly. Do not publish a second copy
+under `public/desktop`; a duplicate can pass basic JSON validation while leaving
+the live updater route on an older release.
 
 The stable channel is intentionally inactive until Folian promotes a real stable desktop release. While inactive, `/desktop/stable/darwin-arm64.json` is served by an application route that returns a cacheable `404` JSON response rather than advertising an old beta release.
 

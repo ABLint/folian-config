@@ -103,7 +103,9 @@ Configuration changes should not require application code changes.
 
 If Anthropic or OpenAI releases a new model, add it to `data/models.json`, validate, and deploy this repository. Desktop clients with remote catalogue support will see the model after their next refresh.
 
-Native desktop update feeds live under `public/desktop/`. The Folian desktop release workflow stages accepted Squirrel.Mac feed JSON into this repository:
+Native desktop update feeds live under `data/desktop/` and are served by
+version-aware route handlers. The Folian desktop release workflow stages
+accepted Squirrel.Mac feed JSON into this repository:
 
 ```bash
 cd /Users/chrispascoe/Projects/novel-studio

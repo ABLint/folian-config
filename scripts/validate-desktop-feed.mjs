@@ -23,6 +23,12 @@ for (const channel of channels) {
 	assert.equal(Number.isNaN(Date.parse(feed.pub_date)), false, `${channel} feed pub_date`);
 }
 
+const betaPublicFilePath = join(root, 'public', 'desktop', 'beta', 'darwin-arm64.json');
+assert.equal(
+	existsSync(betaPublicFilePath),
+	false,
+	'beta feed has one canonical source under data/desktop'
+);
 const stableFilePath = join(root, 'public', 'desktop', 'stable', 'darwin-arm64.json');
 assert.equal(existsSync(stableFilePath), false, 'stable channel does not publish a beta feed file');
 const stableRoute = readFileSync(
