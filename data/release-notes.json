@@ -1,8 +1,21 @@
 {
-  "configurationVersion": 5,
-  "publishedAt": "2026-07-28T16:19:57.748Z",
-  "schemaVersion": "2026-07-28.v5",
+  "configurationVersion": 6,
+  "publishedAt": "2026-07-29T03:57:15.346Z",
+  "schemaVersion": "2026-07-29.v6",
   "notes": [
+    {
+      "version": "0.1.0-beta.9",
+      "publishedAt": "2026-07-29T03:57:15.346Z",
+      "channel": "beta",
+      "title": "Folian Beta 9",
+      "items": [
+        "Existing projects now appear first when Folian opens.",
+        "The most recently used project is highlighted under Continue writing.",
+        "Other projects appear in a clearer Recent projects section.",
+        "New-project setup stays collapsed until you choose to create another project.",
+        "About Folian now provides a clearer Beta 9 version reference."
+      ]
+    },
     {
       "version": "0.1.0-beta.8",
       "publishedAt": "2026-07-28T16:19:57.748Z",
