@@ -16,10 +16,13 @@ assert.equal(compareVersions('0.1.0-beta.5', '0.1.0-beta.7'), -1);
 assert.equal(compareVersions('0.1.0-beta.7', '0.1.0-beta.7'), 0);
 assert.equal(compareVersions('0.1.0-beta.8', '0.1.0-beta.7'), 1);
 assert.equal(compareVersions('0.1.0-beta.10', '0.1.0-beta.7'), 1);
+assert.equal(compareVersions('0.1.0-beta.9', '0.1.0-beta.10'), -1);
 assert.equal(compareVersions('0.1.0', '0.1.0-beta.7'), 1);
 assert.equal(shouldOfferDesktopUpdate('0.1.0-beta.5', '0.1.0-beta.7'), true);
 assert.equal(shouldOfferDesktopUpdate('0.1.0-beta.7', '0.1.0-beta.7'), false);
 assert.equal(shouldOfferDesktopUpdate('0.1.0-beta.8', '0.1.0-beta.7'), false);
+assert.equal(shouldOfferDesktopUpdate('0.1.0-beta.9', '0.1.0-beta.10'), true);
+assert.equal(shouldOfferDesktopUpdate('0.1.0-beta.10', '0.1.0-beta.10'), false);
 assert.equal(shouldOfferDesktopUpdate(null, '0.1.0-beta.7'), true);
 
 console.log('Folian version-aware desktop feed tests passed.');
