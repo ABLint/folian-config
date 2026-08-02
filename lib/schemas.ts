@@ -54,6 +54,7 @@ export const modelSchema = z.object({
 	replacementModelId: z.string().min(1).max(160).optional(),
 	providerDocumentationUrl: z.string().url(),
 	lastVerifiedAt: z.string().datetime(),
+	verificationStatus: z.enum(['verified', 'verification_skipped', 'verification_failed', 'unknown']).default('unknown'),
 	minimumFolianVersion: z.string().min(1).max(40),
 	compatibilityStatus: compatibilityStatusSchema,
 	recommendedFor: z.array(recommendedUseCaseSchema).default([]),

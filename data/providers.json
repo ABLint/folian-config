@@ -1,7 +1,7 @@
 {
-  "configurationVersion": 2,
-  "publishedAt": "2026-07-26T00:00:00.000Z",
-  "schemaVersion": "2026-07-26.providers.v1",
+  "configurationVersion": 3,
+  "publishedAt": "2026-08-02T00:00:00.000Z",
+  "schemaVersion": "2026-08-02.providers.beta.v2",
   "providers": [
     {
       "id": "anthropic",
@@ -10,7 +10,7 @@
       "authMode": "api_key",
       "endpointType": "hosted",
       "supportsCustomModelId": false,
-      "publicDocsUrl": "https://docs.claude.com/en/docs/about-claude/models/overview"
+      "publicDocsUrl": "https://platform.claude.com/docs/en/about-claude/models/overview"
     },
     {
       "id": "openai",
@@ -20,32 +20,6 @@
       "endpointType": "hosted",
       "supportsCustomModelId": false,
       "publicDocsUrl": "https://developers.openai.com/api/docs/models"
-    },
-    {
-      "id": "gemini",
-      "displayName": "Google Gemini",
-      "status": "available",
-      "authMode": "api_key",
-      "endpointType": "hosted",
-      "supportsCustomModelId": false,
-      "publicDocsUrl": "https://ai.google.dev/gemini-api/docs/models"
-    },
-    {
-      "id": "openrouter",
-      "displayName": "OpenRouter",
-      "status": "available",
-      "authMode": "api_key",
-      "endpointType": "aggregator",
-      "supportsCustomModelId": true,
-      "publicDocsUrl": "https://openrouter.ai/api/v1/models"
-    },
-    {
-      "id": "openai-compatible",
-      "displayName": "OpenAI-compatible endpoint",
-      "status": "available",
-      "authMode": "optional_api_key",
-      "endpointType": "custom",
-      "supportsCustomModelId": true
     }
   ]
 }

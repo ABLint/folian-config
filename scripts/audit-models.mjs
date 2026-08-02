@@ -21,6 +21,7 @@ const compatibilityStatuses = new Set([
 	'unverified',
 	'unsupported',
 ]);
+const verificationStatuses = new Set(['verified', 'verification_skipped', 'verification_failed', 'unknown']);
 const recommendedUseCases = new Set([
 	'long_form_writing',
 	'manuscript_analysis',
@@ -64,34 +65,6 @@ const providerApiChecks = [
 				},
 			});
 			if (!response.ok) throw new Error(`Anthropic model list returned ${response.status}`);
-			const payload = await response.json();
-			return new Set((payload.data ?? []).map((model) => model.id));
-		},
-	},
-	{
-		id: 'gemini',
-		enabled: Boolean(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY) && !offline,
-		async listModels() {
-			const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-			const response = await fetch(
-				`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`
-			);
-			if (!response.ok) throw new Error(`Gemini model list returned ${response.status}`);
-			const payload = await response.json();
-			return new Set(
-				(payload.models ?? []).map((model) => String(model.name ?? '').replace(/^models\//, ''))
-			);
-		},
-	},
-	{
-		id: 'openrouter',
-		enabled: (Boolean(process.env.OPENROUTER_API_KEY) || process.env.FOLIAN_AUDIT_OPENROUTER === '1') && !offline,
-		async listModels() {
-			const headers = process.env.OPENROUTER_API_KEY
-				? { Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}` }
-				: {};
-			const response = await fetch('https://openrouter.ai/api/v1/models', { headers });
-			if (!response.ok) throw new Error(`OpenRouter model list returned ${response.status}`);
 			const payload = await response.json();
 			return new Set((payload.data ?? []).map((model) => model.id));
 		},
@@ -154,6 +127,7 @@ function auditLocalCatalogue() {
 			if (model.deprecatedAt) assertDate(model.deprecatedAt, `${model.id} deprecatedAt`);
 			assert.match(model.providerDocumentationUrl, /^https:\/\//, `${model.id} providerDocumentationUrl`);
 			assertIsoDateTime(model.lastVerifiedAt, `${model.id} lastVerifiedAt`);
+			assert.ok(verificationStatuses.has(model.verificationStatus), `${model.id} verificationStatus`);
 			assert.equal(typeof model.minimumFolianVersion, 'string', `${model.id} minimumFolianVersion`);
 			assert.ok(compatibilityStatuses.has(model.compatibilityStatus), `${model.id} compatibilityStatus`);
 			for (const useCase of model.recommendedFor ?? []) {
@@ -232,7 +206,11 @@ async function auditProviderApi(modelDocument) {
 const { models, providerCount } = auditLocalCatalogue();
 const apiRows = await auditProviderApi(models);
 
-console.log('Folian model catalogue audit passed.');
+const verificationComplete = apiRows
+	.filter((row) => ['openai', 'anthropic'].includes(row.provider))
+	.every((row) => row.status === 'verified');
+console.log('Folian model catalogue schema audit passed.');
+console.log(`Live provider verification: ${verificationComplete ? 'verified' : 'verification skipped or incomplete'}`);
 console.log(`Providers checked locally: ${providerCount}`);
 for (const provider of models.providers) {
 	const active = provider.models.filter((model) => !model.deprecated).length;
