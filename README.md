@@ -94,12 +94,13 @@ Configuration changes should not require application code changes.
 1. Edit the relevant JSON file in `data/`.
 2. Increment `configurationVersion`.
 3. Update `publishedAt`.
-4. Run `npm run audit:models` for model catalogue changes.
-5. Run `npm run test`, `npm run lint`, `npm run typecheck` and `npm run build`.
-6. Commit.
-7. Deploy.
-8. Verify the production endpoint.
-9. Verify Folian Studio and Folian Desktop clients refresh the catalogue.
+4. Run `npm run audit:models` for local model catalogue checks.
+5. For any Anthropic Beta model change, run `npm run audit:anthropic:live` with `ANTHROPIC_API_KEY` supplied outside the repository.
+6. Run `npm run test`, `npm run lint`, `npm run typecheck` and `npm run build`.
+7. Commit.
+8. Deploy.
+9. Verify the production endpoint.
+10. Verify Folian Studio and Folian Desktop clients refresh the catalogue.
 
 If Anthropic or OpenAI releases a new model, add it to `data/models.json`, validate, and deploy this repository. Desktop clients with remote catalogue support will see the model after their next refresh.
 
@@ -131,7 +132,15 @@ npm run build
 
 Invalid configuration should never be deployed. API routes also validate documents before serving them and return a safe unavailable response if validation fails.
 
-Provider API checks are optional. `npm run audit:models` uses local validation by default and will query official provider model-list APIs only when the relevant credentials or flags are supplied:
+Provider API checks are optional for routine local validation. `npm run audit:models` reports `credentials_missing` or `documentation_only` when no provider check has run; it does not claim live verification. A model catalogue publication that changes Anthropic Beta models requires the strict live gate:
+
+```bash
+ANTHROPIC_API_KEY='...' FOLIAN_REQUIRE_LIVE_AI=1 npm run audit:anthropic:live
+```
+
+The strict command checks Anthropic's official Models API, then tests each published Anthropic Beta model sequentially using Folian's native Messages request shape: plain completion, structured output, Chapter Brief, manuscript continuation, and scene notes. It makes no automatic retries. Do not increment `configurationVersion` or mark a model `verified` until this command passes.
+
+Routine provider API checks can use:
 
 - `OPENAI_API_KEY`
 - `ANTHROPIC_API_KEY`

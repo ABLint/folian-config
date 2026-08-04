@@ -55,6 +55,14 @@ npm run typecheck
 npm run build
 ```
 
+For an Anthropic Beta model publication, run the additional release gate with a locally supplied key:
+
+```bash
+ANTHROPIC_API_KEY='...' FOLIAN_REQUIRE_LIVE_AI=1 npm run audit:anthropic:live
+```
+
+This checks the official Models API and validates each published Anthropic model sequentially using the provider-native Folian request shape for plain completion, structured output, Chapter Brief, manuscript continuation, and scene notes. Missing credentials, unavailable models, permissions failures, and response-validation failures are explicit outcomes and fail the strict gate.
+
 ## Deployment
 
 - Vercel project root: `/`
@@ -62,7 +70,7 @@ npm run build
 - Production domain: `config.folian.app`
 - Runtime secrets: none required
 
-Provider API keys may be supplied locally or in CI for audit-only verification. They are not required by the production service.
+Provider API keys may be supplied locally or in CI for audit-only verification. They are not required by the production service and must never be committed.
 
 ## Future Expansion
 

@@ -86,7 +86,17 @@ for (const provider of models.providers) {
 		assert.match(model.providerDocumentationUrl, /^https:\/\//, `${model.id} provider docs URL`);
 			assert.equal(typeof model.lastVerifiedAt, 'string', `${model.id} lastVerifiedAt`);
 			assert.ok(
-				['verified', 'verification_skipped', 'verification_failed', 'unknown'].includes(model.verificationStatus),
+				[
+					'verified',
+					'unavailable',
+					'permission_required',
+					'credentials_missing',
+					'documentation_only',
+					'failed_validation',
+					'verification_skipped',
+					'verification_failed',
+					'unknown',
+				].includes(model.verificationStatus),
 				`${model.id} verificationStatus`
 			);
 		assert.equal(typeof model.minimumFolianVersion, 'string', `${model.id} minimumFolianVersion`);

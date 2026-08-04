@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+	"audit:anthropic:live": "node scripts/audit-models.mjs --provider=anthropic --live-workflows --require-live",
     "audit:models": "node scripts/audit-models.mjs",
     "build": "next build",
     "dev": "next dev",
