@@ -95,6 +95,7 @@ for (const provider of models.providers) {
 					'failed_validation',
 					'verification_skipped',
 					'verification_failed',
+					'beta_candidate',
 					'unknown',
 				].includes(model.verificationStatus),
 				`${model.id} verificationStatus`

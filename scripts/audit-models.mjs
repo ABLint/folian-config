@@ -32,6 +32,7 @@ const verificationStatuses = new Set([
 	// Legacy values remain valid until the next live-verified publication replaces them.
 	'verification_skipped',
 	'verification_failed',
+	'beta_candidate',
 	'unknown',
 ]);
 const recommendedUseCases = new Set(['long_form_writing', 'manuscript_analysis', 'structured_extraction', 'research', 'low_cost_drafting', 'high_quality_reasoning']);

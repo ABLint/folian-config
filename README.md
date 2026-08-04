@@ -95,9 +95,8 @@ Configuration changes should not require application code changes.
 2. Increment `configurationVersion`.
 3. Update `publishedAt`.
 4. Run `npm run audit:models` for local model catalogue checks.
-5. For any Anthropic Beta model change, run `npm run audit:anthropic:live` with `ANTHROPIC_API_KEY` supplied outside the repository.
-6. Run `npm run test`, `npm run lint`, `npm run typecheck` and `npm run build`.
-7. Commit.
+5. Run `npm run test`, `npm run lint`, `npm run typecheck` and `npm run build`.
+6. Commit and deploy.
 8. Deploy.
 9. Verify the production endpoint.
 10. Verify Folian Studio and Folian Desktop clients refresh the catalogue.
@@ -132,13 +131,15 @@ npm run build
 
 Invalid configuration should never be deployed. API routes also validate documents before serving them and return a safe unavailable response if validation fails.
 
-Provider API checks are optional for routine local validation. `npm run audit:models` reports `credentials_missing` or `documentation_only` when no provider check has run; it does not claim live verification. A model catalogue publication that changes Anthropic Beta models requires the strict live gate:
+Provider API checks are optional diagnostics. `npm run audit:models` reports `credentials_missing` or `documentation_only` when no provider check has run; it does not claim live verification. During Folian Beta, officially released models that have not passed manual Studio QA are published with `verificationStatus: "beta_candidate"` and appear under **Beta Candidates** in the picker.
+
+The catalogue covers released text-generation models that Folian's existing OpenAI Responses and Anthropic Messages adapters can call. It deliberately excludes audio, realtime, image-only, embedding, moderation, and invitation-only models because they require different product workflows or transport adapters.
 
 ```bash
 ANTHROPIC_API_KEY='...' FOLIAN_REQUIRE_LIVE_AI=1 npm run audit:anthropic:live
 ```
 
-The strict command checks Anthropic's official Models API, then tests each published Anthropic Beta model sequentially using Folian's native Messages request shape: plain completion, structured output, Chapter Brief, manuscript continuation, and scene notes. It makes no automatic retries. Do not increment `configurationVersion` or mark a model `verified` until this command passes.
+The strict command checks Anthropic's official Models API, then tests each supplied model sequentially using Folian's native Messages request shape. It is useful for engineering diagnostics, but it does not block Beta publication. Human verification inside Studio is the acceptance test: promote a passing candidate to `verified` and the appropriate picker group, or remove a failed candidate and publish a new configuration version.
 
 To assess an exact candidate ID returned by the supplied account, without publishing it, provide a comma-separated candidate list. Candidate IDs are first checked against the account's Models API and then run through the same live workflow contract:
 

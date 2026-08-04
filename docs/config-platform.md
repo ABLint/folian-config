@@ -55,13 +55,17 @@ npm run typecheck
 npm run build
 ```
 
-For an Anthropic Beta model publication, run the additional release gate with a locally supplied key:
+For an optional Anthropic live diagnostic, run this with a locally supplied key:
 
 ```bash
 ANTHROPIC_API_KEY='...' FOLIAN_REQUIRE_LIVE_AI=1 npm run audit:anthropic:live
 ```
 
-This checks the official Models API and validates each published Anthropic model sequentially using the provider-native Folian request shape for plain completion, structured output, Chapter Brief, manuscript continuation, and scene notes. Missing credentials, unavailable models, permissions failures, and response-validation failures are explicit outcomes and fail the strict gate.
+This checks the official Models API and validates supplied Anthropic models sequentially using the provider-native Folian request shape for plain completion, structured output, Chapter Brief, manuscript continuation, and scene notes. It is an optional engineering diagnostic during Beta, not a publication gate.
+
+Officially released models that have not completed manual Studio QA use `verificationStatus: "beta_candidate"`. They remain visible under **Beta Candidates**. After human QA, promote a passing model to `verified` and mark it Recommended or Advanced as appropriate. Remove a failing model, increment `configurationVersion`, update `publishedAt`, and deploy the corrected document.
+
+The served catalogue is intentionally limited to released text-generation models compatible with Folian's current OpenAI Responses and Anthropic Messages adapters. Models for audio, realtime, images, embeddings, moderation, or invitation-only access are not treated as text-model choices.
 
 To audit an unpublished exact model ID returned by that account, set `FOLIAN_ANTHROPIC_CANDIDATE_MODELS` to a comma-separated list. Candidate models are never added to the served catalogue automatically.
 

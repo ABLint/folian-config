@@ -64,6 +64,7 @@ export const modelSchema = z.object({
 		// Retained so older, already-published catalogue documents remain readable.
 		'verification_skipped',
 		'verification_failed',
+		'beta_candidate',
 		'unknown',
 	]).default('unknown'),
 	minimumFolianVersion: z.string().min(1).max(40),

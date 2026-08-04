@@ -1,7 +1,7 @@
 {
-  "configurationVersion": 7,
-  "publishedAt": "2026-08-02T00:00:00.000Z",
-  "schemaVersion": "2026-08-02.models.beta.v2",
+  "configurationVersion": 8,
+  "publishedAt": "2026-08-04T00:00:00.000Z",
+  "schemaVersion": "2026-08-04.models.beta.v3",
   "minimumDesktopVersion": "0.1.0-beta.10",
   "providers": [
     {
@@ -10,36 +10,84 @@
       "status": "available",
       "models": [
         {
-          "id": "claude-sonnet-4-5",
+          "id": "claude-fable-5",
           "provider": "anthropic",
-          "displayName": "Claude Sonnet 4.5",
-          "recommended": true,
-          "deprecated": false,
-          "lifecycleStatus": "stable",
-          "providerDocumentationUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
-          "lastVerifiedAt": "2026-08-02T00:00:00.000Z",
-          "verificationStatus": "verification_skipped",
-          "minimumFolianVersion": "0.1.0-beta.10",
-          "compatibilityStatus": "supported",
-          "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"],
-          "tags": ["recommended_for_writing", "large_context", "structured_output_friendly"],
-          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": false, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": false, "contextWindow": 200000, "maxOutputTokens": 64000 }
-        },
-        {
-          "id": "claude-opus-4-1",
-          "provider": "anthropic",
-          "displayName": "Claude Opus 4.1",
+          "displayName": "Claude Fable 5",
           "recommended": false,
           "deprecated": false,
           "lifecycleStatus": "stable",
           "providerDocumentationUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
-          "lastVerifiedAt": "2026-08-02T00:00:00.000Z",
-          "verificationStatus": "verification_skipped",
+          "lastVerifiedAt": "2026-08-04T00:00:00.000Z",
+          "verificationStatus": "beta_candidate",
           "minimumFolianVersion": "0.1.0-beta.10",
           "compatibilityStatus": "supported",
           "recommendedFor": ["long_form_writing", "manuscript_analysis", "high_quality_reasoning"],
-          "tags": ["high_quality_reasoning", "large_context", "structured_output_friendly"],
-          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": false, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": false, "contextWindow": 200000, "maxOutputTokens": 32000 }
+          "tags": ["beta_candidate", "large_context", "high_quality_reasoning"],
+          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": false, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": false, "contextWindow": 1000000, "maxOutputTokens": 128000 }
+        },
+        {
+          "id": "claude-opus-5",
+          "provider": "anthropic",
+          "displayName": "Claude Opus 5",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "lastVerifiedAt": "2026-08-04T00:00:00.000Z",
+          "verificationStatus": "beta_candidate",
+          "minimumFolianVersion": "0.1.0-beta.10",
+          "compatibilityStatus": "supported",
+          "recommendedFor": ["long_form_writing", "manuscript_analysis", "high_quality_reasoning"],
+          "tags": ["beta_candidate", "large_context", "high_quality_reasoning"],
+          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": false, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": false, "contextWindow": 1000000, "maxOutputTokens": 128000 }
+        },
+        {
+          "id": "claude-sonnet-5",
+          "provider": "anthropic",
+          "displayName": "Claude Sonnet 5",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "lastVerifiedAt": "2026-08-04T00:00:00.000Z",
+          "verificationStatus": "beta_candidate",
+          "minimumFolianVersion": "0.1.0-beta.10",
+          "compatibilityStatus": "supported",
+          "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"],
+          "tags": ["beta_candidate", "large_context", "structured_output_friendly"],
+          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": false, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": false, "contextWindow": 1000000, "maxOutputTokens": 128000 }
+        },
+        {
+          "id": "claude-haiku-4-5",
+          "provider": "anthropic",
+          "displayName": "Claude Haiku 4.5",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "stable",
+          "providerDocumentationUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "lastVerifiedAt": "2026-08-04T00:00:00.000Z",
+          "verificationStatus": "beta_candidate",
+          "minimumFolianVersion": "0.1.0-beta.10",
+          "compatibilityStatus": "supported",
+          "recommendedFor": ["low_cost_drafting", "structured_extraction"],
+          "tags": ["beta_candidate", "fast", "low_cost_drafting", "structured_output_friendly"],
+          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": false, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": false, "contextWindow": 200000, "maxOutputTokens": 64000 }
+        },
+        {
+          "id": "claude-sonnet-4-5",
+          "provider": "anthropic",
+          "displayName": "Claude Sonnet 4.5",
+          "recommended": false,
+          "deprecated": false,
+          "lifecycleStatus": "legacy_supported",
+          "providerDocumentationUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "lastVerifiedAt": "2026-08-04T00:00:00.000Z",
+          "verificationStatus": "beta_candidate",
+          "minimumFolianVersion": "0.1.0-beta.10",
+          "compatibilityStatus": "supported",
+          "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"],
+          "tags": ["beta_candidate", "older_supported", "structured_output_friendly"],
+          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": false, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": false, "contextWindow": 200000, "maxOutputTokens": 64000 }
         }
       ]
     },
@@ -49,85 +97,34 @@
       "status": "available",
       "models": [
         {
-          "id": "gpt-5.6-sol",
-          "provider": "openai",
-          "displayName": "GPT-5.6 Sol",
-          "recommended": true,
-          "deprecated": false,
-          "lifecycleStatus": "stable",
-          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-08-02T00:00:00.000Z",
-          "verificationStatus": "verification_skipped",
-          "minimumFolianVersion": "0.1.0-beta.10",
-          "compatibilityStatus": "supported",
-          "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction", "high_quality_reasoning"],
-          "tags": ["recommended_for_writing", "large_context", "structured_output_friendly"],
-          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
+          "id": "gpt-5.6-sol", "provider": "openai", "displayName": "GPT-5.6 Sol", "recommended": false, "deprecated": false, "lifecycleStatus": "stable", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction", "high_quality_reasoning"], "tags": ["beta_candidate", "large_context", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
         },
         {
-          "id": "gpt-5.6-terra",
-          "provider": "openai",
-          "displayName": "GPT-5.6 Terra",
-          "recommended": false,
-          "deprecated": false,
-          "lifecycleStatus": "stable",
-          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-08-02T00:00:00.000Z",
-          "verificationStatus": "verification_skipped",
-          "minimumFolianVersion": "0.1.0-beta.10",
-          "compatibilityStatus": "supported",
-          "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"],
-          "tags": ["large_context", "structured_output_friendly"],
-          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
+          "id": "gpt-5.6-terra", "provider": "openai", "displayName": "GPT-5.6 Terra", "recommended": false, "deprecated": false, "lifecycleStatus": "stable", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"], "tags": ["beta_candidate", "large_context", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
         },
         {
-          "id": "gpt-5.6-luna",
-          "provider": "openai",
-          "displayName": "GPT-5.6 Luna",
-          "recommended": true,
-          "deprecated": false,
-          "lifecycleStatus": "stable",
-          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models",
-          "lastVerifiedAt": "2026-08-02T00:00:00.000Z",
-          "verificationStatus": "verification_skipped",
-          "minimumFolianVersion": "0.1.0-beta.10",
-          "compatibilityStatus": "supported",
-          "recommendedFor": ["low_cost_drafting", "structured_extraction"],
-          "tags": ["fast", "low_cost_drafting", "structured_output_friendly"],
-          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
+          "id": "gpt-5.6-luna", "provider": "openai", "displayName": "GPT-5.6 Luna", "recommended": false, "deprecated": false, "lifecycleStatus": "stable", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["low_cost_drafting", "structured_extraction"], "tags": ["beta_candidate", "fast", "low_cost_drafting", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
         },
         {
-          "id": "gpt-5.5",
-          "provider": "openai",
-          "displayName": "GPT-5.5",
-          "recommended": false,
-          "deprecated": false,
-          "lifecycleStatus": "stable",
-          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-5.5",
-          "lastVerifiedAt": "2026-08-02T00:00:00.000Z",
-          "verificationStatus": "verification_skipped",
-          "minimumFolianVersion": "0.1.0-beta.10",
-          "compatibilityStatus": "supported",
-          "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"],
-          "tags": ["large_context", "structured_output_friendly"],
-          "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
+          "id": "gpt-5.5", "provider": "openai", "displayName": "GPT-5.5", "recommended": false, "deprecated": false, "lifecycleStatus": "stable", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-5.5", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"], "tags": ["beta_candidate", "large_context", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
         },
         {
-          "id": "gpt-4.1",
-          "provider": "openai",
-          "displayName": "GPT-4.1",
-          "recommended": false,
-          "deprecated": false,
-          "lifecycleStatus": "legacy_supported",
-          "releasedAt": "2025-04-14",
-          "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-4.1",
-          "lastVerifiedAt": "2026-08-02T00:00:00.000Z",
-          "verificationStatus": "verification_skipped",
-          "minimumFolianVersion": "0.1.0-beta.10",
-          "compatibilityStatus": "supported",
-          "recommendedFor": ["long_form_writing", "structured_extraction"],
-          "tags": ["older_supported", "structured_output_friendly"],
-          "capabilities": { "streaming": true, "vision": true, "reasoning": false, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1047576, "maxOutputTokens": 32768 }
+          "id": "gpt-5.4", "provider": "openai", "displayName": "GPT-5.4", "recommended": false, "deprecated": false, "lifecycleStatus": "stable", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-5.4", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["long_form_writing", "manuscript_analysis", "structured_extraction"], "tags": ["beta_candidate", "large_context", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1050000, "maxOutputTokens": 128000 }
+        },
+        {
+          "id": "gpt-5.4-mini", "provider": "openai", "displayName": "GPT-5.4 mini", "recommended": false, "deprecated": false, "lifecycleStatus": "stable", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-5.4-mini", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["low_cost_drafting", "structured_extraction"], "tags": ["beta_candidate", "fast", "low_cost_drafting", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 400000, "maxOutputTokens": 128000 }
+        },
+        {
+          "id": "gpt-5.4-nano", "provider": "openai", "displayName": "GPT-5.4 nano", "recommended": false, "deprecated": false, "lifecycleStatus": "stable", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-5.4-nano", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["low_cost_drafting", "structured_extraction"], "tags": ["beta_candidate", "fast", "low_cost_drafting", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": true, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 400000, "maxOutputTokens": 128000 }
+        },
+        {
+          "id": "gpt-4.1", "provider": "openai", "displayName": "GPT-4.1", "recommended": false, "deprecated": false, "lifecycleStatus": "legacy_supported", "releasedAt": "2025-04-14", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-4.1", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["long_form_writing", "structured_extraction"], "tags": ["beta_candidate", "older_supported", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": false, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1047576, "maxOutputTokens": 32768 }
+        },
+        {
+          "id": "gpt-4.1-mini", "provider": "openai", "displayName": "GPT-4.1 mini", "recommended": false, "deprecated": false, "lifecycleStatus": "legacy_supported", "releasedAt": "2025-04-14", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-4.1-mini", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["low_cost_drafting", "structured_extraction"], "tags": ["beta_candidate", "older_supported", "fast", "low_cost_drafting", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": false, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1047576, "maxOutputTokens": 32768 }
+        },
+        {
+          "id": "gpt-4.1-nano", "provider": "openai", "displayName": "GPT-4.1 nano", "recommended": false, "deprecated": false, "lifecycleStatus": "legacy_supported", "releasedAt": "2025-04-14", "providerDocumentationUrl": "https://developers.openai.com/api/docs/models/gpt-4.1-nano", "lastVerifiedAt": "2026-08-04T00:00:00.000Z", "verificationStatus": "beta_candidate", "minimumFolianVersion": "0.1.0-beta.10", "compatibilityStatus": "supported", "recommendedFor": ["low_cost_drafting", "structured_extraction"], "tags": ["beta_candidate", "older_supported", "fast", "low_cost_drafting", "structured_output_friendly"], "capabilities": { "streaming": true, "vision": true, "reasoning": false, "toolCalling": true, "jsonMode": true, "structuredOutput": true, "promptCaching": true, "temperature": true, "mcpCompatible": true, "contextWindow": 1047576, "maxOutputTokens": 32768 }
         }
       ]
     }
