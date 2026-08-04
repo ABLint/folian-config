@@ -140,6 +140,14 @@ ANTHROPIC_API_KEY='...' FOLIAN_REQUIRE_LIVE_AI=1 npm run audit:anthropic:live
 
 The strict command checks Anthropic's official Models API, then tests each published Anthropic Beta model sequentially using Folian's native Messages request shape: plain completion, structured output, Chapter Brief, manuscript continuation, and scene notes. It makes no automatic retries. Do not increment `configurationVersion` or mark a model `verified` until this command passes.
 
+To assess an exact candidate ID returned by the supplied account, without publishing it, provide a comma-separated candidate list. Candidate IDs are first checked against the account's Models API and then run through the same live workflow contract:
+
+```bash
+ANTHROPIC_API_KEY='...' FOLIAN_REQUIRE_LIVE_AI=1 \
+FOLIAN_ANTHROPIC_CANDIDATE_MODELS='exact-id-from-models-api' \
+npm run audit:anthropic:live
+```
+
 Routine provider API checks can use:
 
 - `OPENAI_API_KEY`

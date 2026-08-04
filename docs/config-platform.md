@@ -63,6 +63,8 @@ ANTHROPIC_API_KEY='...' FOLIAN_REQUIRE_LIVE_AI=1 npm run audit:anthropic:live
 
 This checks the official Models API and validates each published Anthropic model sequentially using the provider-native Folian request shape for plain completion, structured output, Chapter Brief, manuscript continuation, and scene notes. Missing credentials, unavailable models, permissions failures, and response-validation failures are explicit outcomes and fail the strict gate.
 
+To audit an unpublished exact model ID returned by that account, set `FOLIAN_ANTHROPIC_CANDIDATE_MODELS` to a comma-separated list. Candidate models are never added to the served catalogue automatically.
+
 ## Deployment
 
 - Vercel project root: `/`

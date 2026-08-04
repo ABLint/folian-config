@@ -12,6 +12,12 @@ const requireLive = args.has('--require-live') || process.env.FOLIAN_REQUIRE_LIV
 const providerArgument = [...args].find((argument) => argument.startsWith('--provider='));
 const selectedProvider = providerArgument?.slice('--provider='.length) ?? null;
 const delayMs = Math.max(0, Number(process.env.FOLIAN_MODEL_AUDIT_DELAY_MS ?? '1250') || 0);
+const anthropicCandidateModelIds = [...new Set(
+	(process.env.FOLIAN_ANTHROPIC_CANDIDATE_MODELS ?? '')
+		.split(',')
+		.map((value) => value.trim())
+		.filter(Boolean)
+)];
 const sleep = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
 
 const lifecycleStatuses = new Set(['stable', 'legacy_supported', 'preview', 'deprecated', 'unavailable']);
@@ -299,39 +305,48 @@ async function auditProviderApi(modelDocument) {
 	for (const provider of providers) {
 		const credential = providerCredential(provider.id);
 		const publishedModels = provider.models.filter((model) => !model.deprecated && model.compatibilityStatus === 'supported');
+		const auditModels = provider.id === 'anthropic'
+			? [
+				...publishedModels,
+				...anthropicCandidateModelIds
+					.filter((candidate) => !publishedModels.some((model) => model.id === candidate))
+					.map((id) => ({ id, candidate: true })),
+			]
+			: publishedModels;
 		if (offline) {
 			rows.push({ provider: provider.id, status: 'documentation_only', detail: 'Offline audit requested. No provider network calls were made.', models: [] });
 			continue;
 		}
 		if (!credential) {
-			const row = { provider: provider.id, status: 'credentials_missing', detail: 'No provider API key was supplied.', models: publishedModels.map((model) => ({ model: model.id, status: 'credentials_missing' })) };
+			const row = { provider: provider.id, status: 'credentials_missing', detail: 'No provider API key was supplied.', models: auditModels.map((model) => ({ model: model.id, status: 'credentials_missing', candidate: Boolean(model.candidate) })) };
 			rows.push(row);
 			continue;
 		}
 		try {
 			const listed = provider.id === 'anthropic' ? await listAnthropicModels(credential) : await listOpenAiModels(credential);
 			const listedIds = new Set(listed.map((model) => model.id).filter((id) => typeof id === 'string'));
+			const availableModelIds = [...listedIds].sort();
 			const modelRows = [];
-			for (const model of publishedModels) {
+			for (const model of auditModels) {
 				if (!listedIds.has(model.id)) {
-					modelRows.push({ model: model.id, status: 'unavailable', detail: 'The official Models API did not list this model for the supplied account.' });
+					modelRows.push({ model: model.id, status: 'unavailable', detail: 'The official Models API did not list this model for the supplied account.', candidate: Boolean(model.candidate) });
 					continue;
 				}
 				const requireAnthropicWorkflowValidation = provider.id === 'anthropic' && (liveWorkflows || requireLive);
 				if (!requireAnthropicWorkflowValidation) {
-					modelRows.push({ model: model.id, status: 'verified', detail: 'Available through the official Models API.' });
+					modelRows.push({ model: model.id, status: 'verified', detail: 'Available through the official Models API.', candidate: Boolean(model.candidate) });
 					continue;
 				}
 				try {
 					const workflowResults = await validateAnthropicFolianWorkflows(credential, model.id);
-					modelRows.push({ model: model.id, status: 'verified', detail: 'Models API and five Folian production-shaped request contracts passed.', workflowResults });
+					modelRows.push({ model: model.id, status: 'verified', detail: 'Models API and five Folian production-shaped request contracts passed.', workflowResults, candidate: Boolean(model.candidate) });
 				} catch (error) {
 					const auditError = error instanceof ProviderAuditError ? error : new ProviderAuditError('failed_validation', error instanceof Error ? error.message : 'Unknown workflow validation failure.');
-					modelRows.push({ model: model.id, status: auditError.outcome, detail: auditError.message, ...auditError.details });
+					modelRows.push({ model: model.id, status: auditError.outcome, detail: auditError.message, candidate: Boolean(model.candidate), ...auditError.details });
 				}
 			}
 			const failed = modelRows.filter((row) => row.status !== 'verified');
-			rows.push({ provider: provider.id, status: failed.length ? 'failed_validation' : 'verified', detail: `${listedIds.size} model IDs returned by the official Models API.`, models: modelRows });
+			rows.push({ provider: provider.id, status: failed.length ? 'failed_validation' : 'verified', detail: `${listedIds.size} model IDs returned by the official Models API.`, models: modelRows, availableModelIds });
 		} catch (error) {
 			const auditError = error instanceof ProviderAuditError ? error : new ProviderAuditError('failed_validation', error instanceof Error ? error.message : 'Unknown provider audit failure.');
 			rows.push({ provider: provider.id, status: auditError.outcome, detail: auditError.message, models: [] });
@@ -356,6 +371,7 @@ for (const provider of models.providers) {
 console.log('Provider API checks:');
 for (const row of apiRows) {
 	console.log(`- ${row.provider}: ${row.status} (${row.detail})`);
+	if (row.availableModelIds) console.log(`  - account models: ${row.availableModelIds.join(', ')}`);
 	for (const model of row.models ?? []) console.log(`  - ${model.model}: ${model.status} (${model.detail ?? 'No live verification was performed.'})`);
 }
 if (!verificationComplete) {
