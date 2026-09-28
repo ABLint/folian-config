@@ -1,8 +1,23 @@
 {
-  "configurationVersion": 7,
-  "publishedAt": "2026-07-29T10:28:23.886Z",
-  "schemaVersion": "2026-07-29.v7",
+  "configurationVersion": 8,
+  "publishedAt": "2026-09-27T19:53:47.880Z",
+  "schemaVersion": "2026-09-27.v8",
   "notes": [
+    {
+      "version": "0.1.0-beta.12",
+      "publishedAt": "2026-09-27T19:53:47.880Z",
+      "channel": "beta",
+      "title": "Folian Mac Public Beta 12",
+      "items": [
+        "Draft chapters, sections, scenes and passages with more dependable autosave, manual save, paragraph spacing and recovery after a failed save.",
+        "Use the Professional Editor to review a passage or selection, revise from a saved Review, edit proposed wording, accept the changes you want and apply them to the manuscript.",
+        "Return to editorial History and open issues. Answer a question into Decisions, add a revision target or send a factual concern to Research.",
+        "Plan with project-aware Story Map threads, beats and supporting points, then review their placement alongside your manuscript.",
+        "Keep Research sources and verification separate from established project facts. Nonfiction editing protects uncertainty and rejects unsupported factual additions.",
+        "Choose current GPT-6 Astra, Sol and Luna models or supported GPT-5.6 alternatives when your connected provider offers them.",
+        "Find clearer first-session help and task-focused guides from the workspace."
+      ]
+    },
     {
       "version": "0.1.0-beta.10",
       "publishedAt": "2026-07-29T10:28:23.886Z",
