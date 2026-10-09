@@ -1,8 +1,21 @@
 {
-  "configurationVersion": 8,
-  "publishedAt": "2026-09-27T19:53:47.880Z",
-  "schemaVersion": "2026-09-27.v8",
+  "configurationVersion": 9,
+  "publishedAt": "2026-10-09T19:03:30Z",
+  "schemaVersion": "2026-10-09.v9",
   "notes": [
+    {
+      "version": "0.1.0-beta.13",
+      "publishedAt": "2026-10-09T19:03:30Z",
+      "channel": "beta",
+      "title": "Folian 0.1.0-beta.13",
+      "items": [
+        "Adds Folian licence activation for purchased copies.",
+        "One Folian licence can be used on up to two Macs.",
+        "Activated copies continue working offline.",
+        "Adds licence management and deactivation of this Mac.",
+        "Keeps writing, projects and backups local. Existing writing, saving and exports remain available if a licence needs attention."
+      ]
+    },
     {
       "version": "0.1.0-beta.12",
       "publishedAt": "2026-09-27T19:53:47.880Z",
