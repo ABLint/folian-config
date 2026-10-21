@@ -1,8 +1,27 @@
 {
-  "configurationVersion": 9,
-  "publishedAt": "2026-10-09T19:03:30Z",
-  "schemaVersion": "2026-10-09.v9",
+  "configurationVersion": 10,
+  "publishedAt": "2026-10-21T15:10:59Z",
+  "schemaVersion": "2026-10-21.v10",
   "notes": [
+    {
+      "version": "0.1.0-beta.14",
+      "publishedAt": "2026-10-21T15:10:59Z",
+      "channel": "beta",
+      "title": "Folian 0.1.0-beta.14",
+      "items": [
+        "New Light mode gives you a white writing canvas and neutral application chrome, alongside Paper and Dark.",
+        "A simpler Home highlights your current writing, one next step and useful progress. Project creation keeps advanced setup optional.",
+        "Cleaner manuscript navigation keeps chapters and scenes compact while retaining search, collapse and reordering.",
+        "Your files and Help → Where is my manuscript? explain where your work is saved and provide a direct manuscript export path.",
+        "Export full manuscripts, chapters, chapter ranges or scenes as DOCX or Markdown. Markdown preserves prose, headings, paragraphs and emphasis where representable.",
+        "Expanded AI-assisted development for Characters, Locations, Relationships, Canon, Timeline and Planning. Suggestions remain reviewable: AI proposes, the writer decides.",
+        "Chapter planning offers clearer briefs, missing-field proposals and inline decisions that save once to your chosen destination.",
+        "Chapter AI uses more reliable source context and preserves paragraph and list boundaries.",
+        "Editing follows the selected chapter or scene, with clearer source-aware History and safer proposal review.",
+        "Accepted development proposals save their records and review History together, with recovery for retried requests.",
+        "Desktop recovery backups use verified snapshots and include local files. Portable project archives remain separate from complete recovery backups."
+      ]
+    },
     {
       "version": "0.1.0-beta.13",
       "publishedAt": "2026-10-09T19:03:30Z",
