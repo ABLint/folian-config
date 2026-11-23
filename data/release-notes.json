@@ -1,8 +1,25 @@
 {
-  "configurationVersion": 10,
-  "publishedAt": "2026-10-21T15:10:59Z",
-  "schemaVersion": "2026-10-21.v10",
+  "configurationVersion": 11,
+  "publishedAt": "2026-11-23T19:38:09.280Z",
+  "schemaVersion": "2026-11-23.v11",
   "notes": [
+    {
+      "version": "0.1.0-beta.15",
+      "publishedAt": "2026-11-23T19:38:09.280Z",
+      "channel": "beta",
+      "title": "Folian Beta 15",
+      "items": [
+        "A simpler Home puts recent projects, project creation, opening and settings within easy reach.",
+        "Continue writing where you left off, or choose a project or manuscript overview as your landing view. Focused Writing keeps the page clear.",
+        "Preview and restore portable .folian archives as separate projects, with supported history and referenced images.",
+        "Review and apply Global Character Rename with selective matches and undo.",
+        "Review deterministic Change Impact findings and their source references.",
+        "Write structured screenplays and export Fountain or a basic screenplay PDF.",
+        "Export selected Story Bible information as Markdown or JSON.",
+        "Connect local read-only MCP clients to explicitly authorised projects using settings and copyable setup instructions.",
+        "Updater version ordering now recognises Folian beta release candidates."
+      ]
+    },
     {
       "version": "0.1.0-beta.14",
       "publishedAt": "2026-10-21T15:10:59Z",
