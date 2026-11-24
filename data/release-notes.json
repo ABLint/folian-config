@@ -1,8 +1,22 @@
 {
-  "configurationVersion": 11,
-  "publishedAt": "2026-11-23T19:38:09.280Z",
-  "schemaVersion": "2026-11-23.v11",
+  "configurationVersion": 12,
+  "publishedAt": "2026-11-24T18:34:03.673Z",
+  "schemaVersion": "2026-11-24.v12",
   "notes": [
+    {
+      "version": "0.1.0-beta.16",
+      "publishedAt": "2026-11-24T18:34:03.673Z",
+      "channel": "beta",
+      "title": "Folian Beta 16",
+      "items": [
+        "Create Finder-accessible Folian project documents and choose where to save them on supported local Mac volumes.",
+        "Open readable manuscript and Story Bible files from your project.",
+        "Export scenes to Word or Markdown, then import revisions for comparison and author approval.",
+        "Connect an external AI assistant through MCP to propose manuscript and Story Bible changes for your review.",
+        "Continue using Folian’s existing native AI integrations.",
+        "Create verified project backups, restore copies and migrate existing projects explicitly while retaining the originals."
+      ]
+    },
     {
       "version": "0.1.0-beta.15",
       "publishedAt": "2026-11-23T19:38:09.280Z",
